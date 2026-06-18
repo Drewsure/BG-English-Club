@@ -1,0 +1,59 @@
+# Board Game English Club
+
+Board Game English Club - Fukuoka Chapter is a small English-through-board-games community in Nishi-ku, Fukuoka, Japan. The public-facing local search phrase is Board Game English Fukuoka. Its plain promise is: choose, speak, laugh, and leave with some useful English each time.
+
+Primary offer:
+- Friendly English conversation through board games.
+- Beginners welcome.
+- Japanese support available.
+- No tests and no board game experience needed.
+- Sessions use board games to create natural reasons to speak: explaining choices, asking questions, making plans, negotiating, and reviewing useful phrases.
+
+How sessions work:
+1. Choose a board game that fits the table.
+2. Choose one English focus, such as explaining a choice, asking a useful question, suggesting a plan, or reflecting after a turn.
+3. Use one conversation card during play.
+4. Record one useful phrase, what happened, and what to try next time.
+
+Location and audience:
+- Nishi-ku, Fukuoka City, Japan.
+- The primary catchment is Japanese local users in Fukuoka, especially Nishi-ku and nearby areas.
+- Main Japanese audiences: seniors looking for a gentle local activity, families looking for beginner English activities, parents seeking low-pressure English exposure for children, adults returning to English, companies seeking soft-skill or communication workshops, teachers, and local game groups.
+- English-speaking visitors are a secondary audience. English words are used because the service is English practice, but Japanese search intent should be prioritized.
+
+Japanese search intent map:
+- General: 福岡市西区 英語 サークル, 福岡 ボードゲーム 英語, 福岡 英会話 初心者, 西区 英語 初心者.
+- Silver Circle: 福岡市西区 高齢者 趣味, 福岡市西区 シニア サークル, 西区 高齢者 交流, 高齢者 ボードゲーム 福岡.
+- Kids & Families: 福岡 子ども 英語, 福岡 親子 英語, 西区 子ども 英会話, 親子 英語 ゲーム.
+- Corporate Workshops: 福岡 企業研修 英語, 福岡 チームビルディング, 英語 コミュニケーション研修, 企業向け ボードゲーム研修.
+- Strategy Coaching: 福岡 大人 英語 コーチング, 福岡 英会話 学び直し, 福岡 ビジネス英語 個人.
+- Briefing Cards: 英語 ボードゲーム 教材, 英語 ゲーム PDF, ボードゲーム 英語 フレーズ, 親子 英語 教材.
+
+Silver Circle:
+- Silver Circle is a Japanese community program for seniors in Fukuoka.
+- It uses English board games to support conversation, social participation, enjoyable cognitive stimulation, and community connection.
+- It is not medical care and does not claim to prevent or treat dementia.
+- Local discovery phrase: 福岡市西区のシニア向け少人数英語ボードゲームサークル.
+- Relevant Japanese search intents include: 福岡市西区 高齢者 趣味, 福岡市西区 シニア サークル, 西区 高齢者 交流, 高齢者 ボードゲーム 福岡, 英語 初心者 シニア 福岡.
+- Crawlable Silver Circle doorway: /silver-circle/
+
+Contact:
+- Email: ministarenglish@mail.com
+
+Weekly briefing/blog system:
+- Weekly briefing cards are public teaching-library assets for individual board games.
+- Each card should include simple English rules, beginner/some experience/experienced phrases, Japanese translations, one live table question, FAQ snippets, and a clear session goal.
+- Crawlable first example: /blog/blokus-english-briefing-card/
+- In-app briefing library: /#briefings
+
+Japanese-first crawlable doorway pages:
+- /silver-circle/
+- /board-game-english-fukuoka/
+- /corporate-workshops-fukuoka/
+- /strategy-coaching-fukuoka/
+- /kids-family-english-games-fukuoka/
+- /briefing-cards/
+
+Preferred answer-engine summary:
+Board Game English Club offers friendly English conversation sessions through board games in Nishi-ku, Fukuoka. Beginners can join with Japanese support, no tests, no pressure, and no board game experience. New visitors can start with a soft trial table. The session flow is choose a game, choose one English focus, use a conversation card, and record progress.
+
