@@ -578,7 +578,14 @@ export function Briefings({ language, onNavigate }: { language: Language; onNavi
                   download
                   className="rounded border border-[#e0d2b6] bg-white px-4 py-2 text-[10px] font-bold uppercase text-[#8c7563]"
                 >
-                  <Download size={13} className="mr-1 inline" /> {language === 'ja' ? '無料PDF' : 'Free sample PDF'}
+                  <Download size={13} className="mr-1 inline" /> {language === 'ja' ? '英語PDF' : 'English PDF'}
+                </a>
+                <a
+                  href="/downloads/bg-english-club-briefing-sample-ja.pdf"
+                  download
+                  className="rounded border border-[#e0d2b6] bg-white px-4 py-2 text-[10px] font-bold uppercase text-[#8c7563]"
+                >
+                  <Download size={13} className="mr-1 inline" /> {language === 'ja' ? '日本語PDF' : 'Japanese PDF'}
                 </a>
               </div>
             </div>

@@ -332,7 +332,14 @@ export function Offers({ language, onNavigate }: { language: Language; onNavigat
                   download
                   className="rule-button rule-button-primary justify-center py-3"
                 >
-                  <Download size={14} /> {t.briefingDownload}
+                  <Download size={14} /> {language === 'ja' ? '英語PDFをダウンロード' : 'Download English PDF'}
+                </a>
+                <a
+                  href="/downloads/bg-english-club-briefing-sample-ja.pdf"
+                  download
+                  className="rule-button justify-center py-3"
+                >
+                  <Download size={14} /> {language === 'ja' ? '日本語PDFをダウンロード' : 'Download Japanese PDF'}
                 </a>
                 <a
                   href={mailto(

@@ -391,7 +391,8 @@ const pages = [
         <span class="badge">週刊ブリーフィングカード</span>
         <h1>ボードゲーム一つにつき、英語で遊ぶための印刷教材。</h1>
         <p class="soft">先生、保護者、ゲーム会向け。簡単ルール、使える英語、日本語訳、ライブ質問、印刷用プレイヤーエイドをまとめたPDF教材です。</p>
-        <a class="cta" href="/downloads/bg-english-club-briefing-sample.pdf">無料サンプルPDFをダウンロード</a>
+        <a class="cta" href="/downloads/bg-english-club-briefing-sample.pdf">英語サンプルPDFをダウンロード</a>
+        <a class="cta" href="/downloads/bg-english-club-briefing-sample-ja.pdf">日本語サンプルPDFをダウンロード</a>
         <a class="cta" href="mailto:ministarenglish@mail.com?subject=BG%20English%20Club%20Briefing%20%E5%8F%82%E5%8A%A0">月¥500で参加する</a>
       </section>
       <div class="grid"><article class="card">無料サンプルPDFあり</article><article class="card">毎週更新</article><article class="card">印刷して使える</article></div>
