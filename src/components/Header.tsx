@@ -65,7 +65,7 @@ export function Header({ currentSection, language, onNavigate, onToggleLanguage 
     <header className="nav-glass fixed inset-x-0 top-0 z-40 border-b border-[#efc779]/80">
       <div className="mx-auto flex h-[66px] w-full max-w-[1360px] items-center justify-between gap-4 px-5 md:px-8">
         <button onClick={() => select('home')} className="flex shrink-0 items-center gap-2 text-left">
-          <BrandLogo />
+          <BrandLogo compact />
         </button>
 
         <nav className="hidden flex-1 items-center justify-end gap-1.5 md:flex xl:gap-2">

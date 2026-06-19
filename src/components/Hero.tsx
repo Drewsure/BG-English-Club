@@ -126,7 +126,7 @@ export function Hero({ onNavigate, language }: HeroProps) {
             <button onClick={() => onNavigate('board')} className="text-[10px] font-bold text-[#c86123]">{t.seeFlow}</button>
           </div>
           {[t.warmup, t.supportedTurns, t.reviewWords].map((title, index) => (
-            <div key={title} className="flex items-center gap-3 border-b border-[#f3e2c2] px-5 py-3 text-xs last:border-0">
+            <div key={title} className="flex items-center gap-3 border-b border-[#f3e2c2] px-5 py-3 text-sm last:border-0 md:text-[15px]">
               <span className={`pill ${index === 1 ? 'pill-green' : 'pill-blue'}`}>{index === 1 ? t.play : t.support}</span>
               <span className="font-bold">{title}</span>
             </div>
@@ -137,7 +137,7 @@ export function Hero({ onNavigate, language }: HeroProps) {
             <p className="font-display text-base tracking-wide text-[#9c4b22]">{t.happens}</p>
             <span className="text-[10px] font-bold text-[#37ac66]">LIVE</span>
           </div>
-          <p className="px-8 py-12 text-center text-xs leading-6 text-[#7b7168]">{t.happensCopy}</p>
+          <p className="px-7 py-10 text-center text-base font-semibold leading-8 text-[#5f554b] md:px-10 md:text-lg md:leading-9">{t.happensCopy}</p>
         </article>
       </section>
     </main>

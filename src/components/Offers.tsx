@@ -15,19 +15,20 @@ const copy = {
     title: 'Find The Right Board Game English Session',
     subtitle: 'Choose a friendly table for your age, group, goal, or organization. Every option is built around simple English, real play, and a clear next step.',
     primary: 'Ask About A Session',
+    emailFallback: 'This opens your email app. If nothing opens, email:',
     secondary: 'See Weekly Briefings',
     partnersCta: 'Corporate + Sponsor Offers',
     best: 'Not sure where to start?',
     bestCopy: 'Start with a trial table if you are new, Kids & Families for a relaxed family session, Silver Circle for a gentle senior group, Strategy Coaching for deeper adult practice, or Corporate Workshops for teams and organizations.',
     productsTitle: 'Programs You Can Book',
     briefingOnboardingTitle: 'BG English Club Briefing Onboarding',
-    briefingOnboardingCopy: 'A simple path for teachers, parents, and game groups: try one sample first, then join the monthly briefing group for the current library and weekly future releases.',
+    briefingOnboardingCopy: 'A simple path for teachers, parents, and game groups: try one sample first, then join the monthly briefing group for the current guide library and new cards as they become available.',
     briefingDownload: 'Download Free Sample PDF',
     briefingJoin: 'Join Briefing Group - ¥500 / month',
     briefingSteps: [
       ['1', 'Download one free PDF', 'Try a complete BG English Club Briefing before joining.'],
       ['2', 'Join the briefing group', 'Get access to currently available cards for ¥500 / month.'],
-      ['3', 'Receive weekly releases', 'New game briefing cards are added on a weekly rhythm.'],
+      ['3', 'Receive new cards', 'New game briefing cards are added regularly.'],
       ['4', 'Use them at the table', 'Print, teach, play, and build practical English around each game.'],
     ],
     funnelTitle: 'How Participation Can Grow',
@@ -84,7 +85,7 @@ const copy = {
         name: 'BG English Club Briefing',
         price: '¥500 / month',
         audience: 'Teachers, parents, game groups',
-        value: 'Download one free sample PDF, then join the briefing group for current cards and new weekly releases.',
+        value: 'Download one free sample PDF, then join the briefing group for current cards and new cards as they become available.',
         cta: 'Join briefing group',
         subject: 'Join BG English Club Briefing',
         body: 'I would like to join BG English Club Briefing for ¥500 / month.\n\nName:\nI am a teacher / parent / game group:\nHow I plan to use the briefings:',
@@ -127,19 +128,20 @@ const copy = {
     title: '目的に合う英語ボードゲームセッション',
     subtitle: '年齢、グループ、目的、団体に合わせて選べます。どのプログラムも、やさしい英語・実際の遊び・明確な次の一歩を大切にしています。',
     primary: 'セッションについて相談する',
+    emailFallback: 'メールアプリが開きます。開かない場合はこちらへ：',
     secondary: '週刊ブリーフィングを見る',
     partnersCta: '企業・スポンサー提案',
     best: 'どこから始める？',
     bestCopy: '初めてなら体験テーブル、家族なら Kids & Families、シニア向けなら Silver Circle、大人の深い練習なら Strategy Coaching、団体なら Corporate Workshops がおすすめです。',
     productsTitle: '予約できるプログラム',
     briefingOnboardingTitle: 'BG English Club Briefing の始め方',
-    briefingOnboardingCopy: '英語講師、保護者、ゲーム会向けのシンプルな流れです。まず無料サンプルを試し、その後は月 ¥500 のグループで現在のカードと今後の週刊リリースを受け取れます。',
+    briefingOnboardingCopy: '英語講師、保護者、ゲーム会向けのシンプルな流れです。まず無料サンプルを試し、その後は月 ¥500 のグループで現在のカードと追加される新しいカードを受け取れます。',
     briefingDownload: '無料サンプルPDFをダウンロード',
     briefingJoin: 'ブリーフィンググループに参加 - 月 ¥500',
     briefingSteps: [
       ['1', '無料PDFを1つ試す', '参加前に BG English Club Briefing の形を確認できます。'],
       ['2', 'グループに参加する', '月 ¥500 で現在公開中のカードにアクセスできます。'],
-      ['3', '毎週の新作を受け取る', '新しいゲーム別ブリーフィングが週ごとに追加されます。'],
+      ['3', '新しいカードを受け取る', '新しいゲーム別ブリーフィングが定期的に追加されます。'],
       ['4', 'テーブルで使う', '印刷して、教えて、遊んで、実用的な英語につなげます。'],
     ],
     funnelTitle: '参加の広がり方',
@@ -238,6 +240,29 @@ const copy = {
 
 export function Offers({ language, onNavigate }: { language: Language; onNavigate: (section: Section) => void }) {
   const t = copy[language];
+  const detailPrograms = programs.map((program, index) => {
+    const product = t.products[index];
+    if (language !== 'ja' || !product) return program;
+    return {
+      ...program,
+      name: product.name,
+      shortName: product.name,
+      answer: product.value,
+      audience: product.audience,
+      outcome: product.value,
+      price: product.price,
+      location: '福岡市内・オンライン相談可',
+      schedule: 'お問い合わせ後に調整します。',
+      bookingAction: product.cta,
+      subject: product.subject,
+      body: product.body,
+      proof: product.bullets.join(' / '),
+      faq: [
+        { question: '初心者でも大丈夫ですか？', answer: 'はい。日本語サポートと、短い英語から始める進行があります。' },
+        { question: 'どうやって予約しますか？', answer: 'ボタンからメールで希望内容を送ってください。日程と人数を相談します。' },
+      ],
+    };
+  });
   const generalLink = mailto(
     language === 'ja' ? 'Board Game English Club セッション相談' : 'Board Game English Club session inquiry',
     language === 'ja' ? 'Board Game English Club のセッションについて相談したいです。\n\nお名前：\n興味のある内容：\n希望日：' : 'I would like to ask about a Board Game English Club session.\n\nName:\nOffer I am interested in:\nPreferred date:'
@@ -254,6 +279,9 @@ export function Offers({ language, onNavigate }: { language: Language; onNavigat
           <button onClick={() => onNavigate('briefings')} className="rule-button px-7 py-3"><BookOpen size={14} /> {t.secondary}</button>
           <button onClick={() => onNavigate('partnerships')} className="rule-button px-7 py-3"><Briefcase size={14} /> {t.partnersCta}</button>
         </div>
+        <p className="mx-auto mt-4 max-w-xl text-sm font-semibold leading-6 text-[#62584f]">
+          {t.emailFallback} <a href={`mailto:${contactEmail}`} className="text-[#bd5c24] underline decoration-[#efc779] underline-offset-4">{contactEmail}</a>
+        </p>
       </header>
 
       <section className="container-shell py-10">
@@ -346,7 +374,7 @@ export function Offers({ language, onNavigate }: { language: Language; onNavigat
             <p className="mt-4 text-sm leading-7 text-[#62584f]">{t.programDetailsCopy}</p>
           </div>
           <div className="mt-7 grid gap-5 lg:grid-cols-2">
-            {programs.map((program) => (
+            {detailPrograms.map((program) => (
               <article key={program.id} id={`program-${program.id}`} className="reference-panel p-5">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
@@ -413,6 +441,9 @@ export function Offers({ language, onNavigate }: { language: Language; onNavigat
             <a href={generalLink} className="rule-button mt-7 justify-center py-3">
               <Mail size={14} /> {t.primary}
             </a>
+            <p className="mt-4 text-sm font-semibold leading-6 text-[#62584f]">
+              {t.emailFallback} <a href={`mailto:${contactEmail}`} className="text-[#bd5c24] underline decoration-[#efc779] underline-offset-4">{contactEmail}</a>
+            </p>
           </article>
         </section>
       </section>

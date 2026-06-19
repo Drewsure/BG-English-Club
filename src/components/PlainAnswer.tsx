@@ -34,9 +34,9 @@ const answers: Partial<Record<Section, { en: string; ja: string; action: string 
     action: 'Partner path',
   },
   play: {
-    en: 'The Table Play Device combines one game, one briefing card, one English goal, one conversation prompt, and one progress note.',
-    ja: 'Table Play Device は、ゲーム・ブリーフィング・英語目標・会話プロンプト・進歩メモを一つにします。',
-    action: 'Table device',
+    en: 'The Table Play Tool combines one game, one briefing card, one English goal, one conversation prompt, and one progress note.',
+    ja: 'Table Play Tool は、ゲーム・ブリーフィング・英語目標・会話プロンプト・進歩メモを一つにします。',
+    action: 'Table Play Tool',
   },
   ranking: {
     en: 'Progress is gentle: record what you actually said, then notice what comes next.',

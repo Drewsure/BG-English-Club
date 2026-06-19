@@ -4,7 +4,7 @@ import type { Language } from '../lib/i18n';
 import { brandPromise, contactEmail, programs, sessionProcess } from '../lib/programs';
 
 const siteUrl = import.meta.env.VITE_SITE_URL || 'https://bg-english-club.netlify.app';
-const imageUrl = `${siteUrl}/images/og-board-game-english-club.svg`;
+const imageUrl = `${siteUrl}/images/board-english-logo.jpeg`;
 
 const pageMeta: Record<Section, { title: string; description: string; keywords: string }> = {
   home: {
@@ -53,9 +53,9 @@ const pageMeta: Record<Section, { title: string; description: string; keywords: 
     keywords: '福岡 企業研修 英語, 福岡 チームビルディング, 英語 コミュニケーション研修, 企業向け ボードゲーム研修',
   },
   play: {
-    title: 'Table Play Device | Choose A Game And Play In English',
+    title: 'Table Play Tool | Choose A Game And Play In English',
     description: 'Build a table-ready English play plan: choose a game, let the briefing auto-match, select one English goal, choose one live table question, and record progress.',
-    keywords: 'table play device, board game English process, conversation card, briefing card, English board games Fukuoka',
+    keywords: 'table play tool, board game English process, conversation card, briefing card, English board games Fukuoka',
   },
   'briefing-detail': {
     title: 'English Board Game Briefing Cards | Board Game English Club',

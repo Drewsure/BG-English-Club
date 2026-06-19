@@ -51,6 +51,8 @@ const escapeHtml = (value: string) => value
   .replace(/"/g, '&quot;')
   .replace(/'/g, '&#039;');
 
+// Shared briefing data is intentionally exported for matching games to briefing cards.
+// eslint-disable-next-line react-refresh/only-export-components
 export const briefings: Briefing[] = [
   {
     slug: 'blokus-english-briefing-card',
@@ -349,16 +351,16 @@ export const briefings: Briefing[] = [
 const pageCopy = {
   en: {
     eyebrow: 'Weekly English Game Briefings',
-    title: 'A Blog That Works Like A Teaching Library',
-    subtitle: 'Each week, publish one simple game briefing card. It helps search engines, AI answers, local discovery, and real people preparing for a table session.',
+    title: 'Simple Game Guides For Your Next English Table',
+    subtitle: 'Use one briefing card before you play. Each guide gives you easy rules, useful phrases, and friendly questions so the table can start speaking with less pressure.',
     introTitle: 'How To Use These Cards',
     introBullets: [
       'Choose one game before the session.',
       'Pick one mission and a few useful phrases.',
       'Play gently, speak during real turns, and review one phrase at the end.',
     ],
-    cadence: 'Recommended publishing rhythm',
-    cadenceCopy: 'Release one briefing every week, then collect four into a monthly guide such as “Best Beginner Board Games For English Conversation In Fukuoka.”',
+    cadence: 'New guides added regularly',
+    cadenceCopy: 'Start with one game, try the phrases at the table, then come back for more beginner-friendly ideas for English conversation in Fukuoka.',
     audience: 'Best For',
     theme: 'Theme Brief',
     why: 'Why It Works For English',
@@ -369,20 +371,20 @@ const pageCopy = {
     rules: 'Simple English Rules',
     silver: 'Silver Circle Fit',
     read: 'Open Briefing',
-    cta: 'Use These In A Session',
+    cta: 'Open Table Play Tool',
   },
   ja: {
     eyebrow: '毎週の英語ゲーム・ブリーフィング',
-    title: 'ブログではなく、使える教材ライブラリーへ',
-    subtitle: '毎週一つ、シンプルなゲーム別ブリーフィングカードを公開します。検索、AI回答、地域発見、そして実際のセッション準備に役立ちます。',
+    title: '次の英語テーブルで使えるゲームガイド',
+    subtitle: '遊ぶ前に一枚のブリーフィングカードを使えます。かんたんなルール、使いやすい英語フレーズ、話しやすい質問で、無理なく会話を始められます。',
     introTitle: 'このカードの使い方',
     introBullets: [
       'セッション前にゲームを一つ選びます。',
       'ミッションを一つ、使うフレーズをいくつか選びます。',
       '実際のターンで少しずつ話し、最後に一つの表現を振り返ります。',
     ],
-    cadence: 'おすすめ公開リズム',
-    cadenceCopy: '毎週一つ公開し、月末に「福岡で英会話に使いやすい初心者向けボードゲーム」のようなまとめ記事にします。',
+    cadence: '新しいガイドを少しずつ追加',
+    cadenceCopy: 'まず一つのゲームから試して、テーブルでフレーズを使ってみてください。福岡で英語の会話に使いやすいゲームを少しずつ増やしていきます。',
     audience: 'おすすめ対象',
     theme: 'テーマ説明',
     why: '英語に向いている理由',
@@ -393,7 +395,7 @@ const pageCopy = {
     rules: 'Simple English Rules',
     silver: 'シルバーサークル適性',
     read: 'ブリーフィングを見る',
-    cta: 'セッションで使う',
+    cta: 'テーブル練習ツールを開く',
   },
 } as const;
 

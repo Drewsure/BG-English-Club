@@ -8,14 +8,14 @@ import { loadSessionProgress } from '../lib/sessionProgress';
 import type { SessionProgressRecord } from '../lib/sessionProgress';
 
 const badges = [
-  { icon: Swords, name: 'Master Negotiator', detail: 'Submitted tips for Negotiation Challenges' },
-  { icon: TrendingUp, name: 'Industrial Tycoon', detail: 'Submitted tips for Trade & Economic Challenges' },
-  { icon: Swords, name: 'Strategic Commander', detail: 'Submitted tips for Leadership Challenges' },
-  { icon: Lightbulb, name: 'Linguistic Architect', detail: 'Submitted tips for Formal Writing Challenges' },
-  { icon: Users, name: 'Grand Diplomat', detail: 'Submitted tips for Diplomacy Challenges' },
-  { icon: Target, name: 'Silver Tongue', detail: 'Submitted tips with Persuasion focus' },
-  { icon: Shield, name: 'Guild Pioneer', detail: 'First tip ever submitted' },
-  { icon: Crown, name: 'Master Strategist', detail: 'Completed a Master-level challenge' },
+  { icon: Swords, name: 'First Session', detail: 'Saved your first table note' },
+  { icon: TrendingUp, name: 'Returning Player', detail: 'Returned for several sessions' },
+  { icon: Swords, name: 'Game Explorer', detail: 'Tried several different games' },
+  { icon: Lightbulb, name: 'Phrase Collector', detail: 'Recorded useful English phrases' },
+  { icon: Users, name: 'Helpful Speaker', detail: 'Used English to help the table' },
+  { icon: Target, name: 'Clear Explainer', detail: 'Practised explaining choices' },
+  { icon: Shield, name: 'Reflective Player', detail: 'Saved review notes after play' },
+  { icon: Crown, name: 'Table Regular', detail: 'Built a steady session habit' },
 ];
 
 const dashboardTranslations = {
@@ -25,13 +25,13 @@ const dashboardTranslations = {
     nextStepsTitle: 'Use This Profile With The Process',
     nextSteps: [
       { title: 'Choose A Game', copy: 'Start in the game library and pick something that fits the table.', section: 'games' as Section, action: 'Open Game Library', icon: Gamepad2 },
-      { title: 'Build A Table Play Device', copy: 'Match the game to a briefing, choose one English goal, and prepare the session card.', section: 'play' as Section, action: 'Open Table Play', icon: PlayCircle },
+      { title: 'Build A Table Play Tool', copy: 'Match the game to a briefing, choose one English goal, and prepare the session card.', section: 'play' as Section, action: 'Open Table Play', icon: PlayCircle },
       { title: 'Read A Briefing', copy: 'Use a printable briefing when you want simple rules, phrases, and table questions.', section: 'briefings' as Section, action: 'Open Briefings', icon: BookOpen },
-      { title: 'See Community Progress', copy: 'Understand how session notes become gentle progress for the group.', section: 'ranking' as Section, action: 'Open Progress', icon: TrendingUp },
+      { title: 'See Member Progress', copy: 'Understand how session notes become gentle progress for the group.', section: 'ranking' as Section, action: 'Open Member Progress', icon: TrendingUp },
     ],
     stats: ['Challenges Done', 'Tips Submitted', 'Votes Earned', 'Badges Earned'],
-    ranks: ['Recruit', 'Strategist', 'Operative', 'Commander', 'Grand Master'],
-    nextRank: 'Next: Strategist (5 XP to go)',
+    ranks: ['New Member', 'Returning Member', 'Table Helper', 'Community Regular', 'Table Mentor'],
+    nextRank: 'Next: Returning Member (5 XP to go)',
     earned: 'earned',
     emptyProgress: 'Use How It Works to pick a focus, use a conversation card, and save one session note.',
     conversationCard: 'Conversation Card',
@@ -43,33 +43,33 @@ const dashboardTranslations = {
     nextStepsTitle: 'プロフィールと流れをつなげる',
     nextSteps: [
       { title: 'ゲームを選ぶ', copy: 'ゲーム一覧から、今日のテーブルに合うものを選びます。', section: 'games' as Section, action: 'ゲーム一覧を開く', icon: Gamepad2 },
-      { title: 'Table Play を作る', copy: 'ゲームにブリーフィングを合わせ、英語目標を一つ選びます。', section: 'play' as Section, action: 'Table Play を開く', icon: PlayCircle },
+      { title: 'テーブル練習ツールを開く', copy: 'ゲームにブリーフィングを合わせ、英語目標を一つ選びます。', section: 'play' as Section, action: 'テーブル練習ツールを開く', icon: PlayCircle },
       { title: 'ブリーフィングを見る', copy: 'かんたんなルール、フレーズ、質問が必要な時に使います。', section: 'briefings' as Section, action: 'ブリーフィングを開く', icon: BookOpen },
-      { title: '全体の進捗を見る', copy: 'セッション記録がグループの進捗につながる流れを確認します。', section: 'ranking' as Section, action: '進捗を開く', icon: TrendingUp },
+      { title: 'メンバー進捗を見る', copy: 'セッション記録がグループの進捗につながる流れを確認します。', section: 'ranking' as Section, action: 'メンバー進捗を開く', icon: TrendingUp },
     ],
     stats: ['完了したチャレンジ', '投稿したヒント', '獲得した票', '獲得バッジ'],
-    ranks: ['リクルート', 'ストラテジスト', 'オペレーター', 'コマンダー', 'グランドマスター'],
-    nextRank: '次: ストラテジスト（あと5 XP）',
+    ranks: ['新メンバー', '継続メンバー', 'テーブルヘルパー', '地域レギュラー', 'テーブルメンター'],
+    nextRank: '次: 継続メンバー（あと5 XP）',
     earned: '獲得',
     emptyProgress: '使い方ページでフォーカスを選び、会話カードを使い、セッション記録を一つ保存してください。',
     conversationCard: '会話カード',
     badges: [
-      { name: '交渉マスター', detail: '交渉チャレンジのヒントを投稿' },
-      { name: '産業戦略家', detail: '取引・経済チャレンジのヒントを投稿' },
-      { name: '戦略コマンダー', detail: 'リーダーシップチャレンジのヒントを投稿' },
-      { name: '言語設計者', detail: 'フォーマルライティングのヒントを投稿' },
-      { name: '外交名人', detail: '外交チャレンジのヒントを投稿' },
-      { name: '説得の達人', detail: '説得フォーカスのヒントを投稿' },
-      { name: 'ギルド開拓者', detail: '最初のヒントを投稿' },
-      { name: 'マスター戦略家', detail: 'マスターレベルのチャレンジを完了' },
+      { name: '初回セッション', detail: '最初のテーブル記録を保存' },
+      { name: '継続プレイヤー', detail: '複数回セッションに参加' },
+      { name: 'ゲーム探索者', detail: 'いくつかのゲームを体験' },
+      { name: 'フレーズコレクター', detail: '使える英語フレーズを記録' },
+      { name: 'テーブルヘルパー', detail: '英語でテーブルを助けた' },
+      { name: '説明上手', detail: '選択の説明を練習' },
+      { name: 'ふり返り上手', detail: 'プレイ後のメモを保存' },
+      { name: 'テーブルレギュラー', detail: '続ける習慣を作った' },
     ],
   },
 } as const;
 
-export function Dashboard({ language, onNavigate }: { onJoin: () => void; language: Language; onNavigate: (section: Section) => void }) {
+export function Dashboard({ onJoin, language, onNavigate }: { onJoin: () => void; language: Language; onNavigate: (section: Section) => void }) {
   const { profile, user } = useAuth();
   const [sessionRecords, setSessionRecords] = useState<SessionProgressRecord[]>([]);
-  const name = profile?.display_name || (user ? 'Guild Member' : 'Preview Member');
+  const name = profile?.display_name || (user ? 'Member' : 'Preview Member');
   const email = user?.email || 'Sign in to view member details';
   const t = ui[language].profile;
   const common = ui[language].common;
@@ -107,6 +107,11 @@ export function Dashboard({ language, onNavigate }: { onJoin: () => void; langua
               <h1 className="font-display mt-2 text-4xl tracking-wide text-[#bd5c24]">{name}</h1>
               <p className="mt-1 text-xs text-[#71675c]">{email}</p>
               <span className="mt-3 inline-flex rounded border border-[#ebbd66] bg-[#fff4d5] px-2 py-1 text-[10px] font-bold text-[#d16a21]">{user ? 'Member' : 'Preview'}</span>
+              {!user && (
+                <button onClick={onJoin} className="rule-button rule-button-primary mt-4 px-5 py-3">
+                  {language === 'ja' ? 'メンバー登録 / ログイン' : 'Join Or Sign In'}
+                </button>
+              )}
             </div>
             <div className="max-w-lg">
               <h2 className="font-display text-3xl tracking-wide text-[#3d332b]">{local.introTitle}</h2>
@@ -144,7 +149,7 @@ export function Dashboard({ language, onNavigate }: { onJoin: () => void; langua
         <section className="reference-panel mt-4 p-7">
           <div className="flex justify-between"><div><p className="text-[10px] text-[#82766b]">{t.currentRank}</p><p className="font-display text-3xl text-[#d06122]">{local.ranks[rankIndex]}</p></div><div className="text-right"><p className="text-[10px] text-[#82766b]">{t.totalPoints}</p><p className="font-display text-3xl">{xp} XP</p></div></div>
           <div className="mt-6 h-4 rounded-full border border-[#dedad4] bg-white"><div className="h-full rounded-full bg-[#d56a22]" style={{ width: `${progressPercent}%` }} /></div>
-          <p className="mt-3 text-right text-[10px] font-bold text-[#e07521]">{xp >= 200 ? 'Grand Master progress is active' : `${Math.max(nextRankTarget - xp, 0)} XP to next rank`}</p>
+          <p className="mt-3 text-right text-[10px] font-bold text-[#e07521]">{xp >= 200 ? 'Table Mentor progress is active' : `${Math.max(nextRankTarget - xp, 0)} XP to next rank`}</p>
           <div className="mt-5 grid grid-cols-5 gap-2 text-center font-display text-[10px] text-[#a29a91]">{local.ranks.map((rank, index) => <span key={rank} className={`border-t-4 pt-2 ${index <= rankIndex ? 'border-[#d56a22] text-[#554b42]' : 'border-[#dedad5]'}`}>{rank}</span>)}</div>
         </section>
         <div className="mt-10 flex justify-between"><h2 className="font-display text-2xl tracking-wide">{t.badges}</h2><span className="text-xs text-[#776e63]">{earnedBadgeCount} / 8 {local.earned}</span></div>
