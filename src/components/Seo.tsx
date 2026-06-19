@@ -57,6 +57,11 @@ const pageMeta: Record<Section, { title: string; description: string; keywords: 
     description: 'Build a table-ready English play plan: choose a game, let the briefing auto-match, select one English goal, choose one live table question, and record progress.',
     keywords: 'table play tool, board game English process, conversation card, briefing card, English board games Fukuoka',
   },
+  'weekly-note': {
+    title: 'BG English Weekly Note | Board Game English In Fukuoka',
+    description: 'A weekly Board Game English note for Fukuoka corporate teams and Silver Circle sessions, with one English skill, one table activity, and practical applications.',
+    keywords: 'Board Game English weekly note, Fukuoka corporate English, Silver Circle English, board game newsletter Japan, English conversation activity',
+  },
   'briefing-detail': {
     title: 'English Board Game Briefing Cards | Board Game English Club',
     description: 'Standalone board game briefing cards for English conversation practice, with simple rules, useful phrases, prompts, table missions, and Japanese support.',

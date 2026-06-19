@@ -38,6 +38,11 @@ const answers: Partial<Record<Section, { en: string; ja: string; action: string 
     ja: 'Table Play Tool は、ゲーム・ブリーフィング・英語目標・会話プロンプト・進歩メモを一つにします。',
     action: 'Table Play Tool',
   },
+  'weekly-note': {
+    en: 'The Weekly Note is a one-page newsletter format: one English skill, one table activity, corporate use, Silver Circle use, and a sponsor space.',
+    ja: 'Weekly Note は、英語スキル、テーブル活動、企業での使い方、Silver Circleでの使い方、スポンサー枠を一枚にまとめます。',
+    action: 'Weekly Note',
+  },
   ranking: {
     en: 'Progress is gentle: record what you actually said, then notice what comes next.',
     ja: '進歩はやさしく記録します。実際に言えた英語を書き、次に試すことを確認します。',

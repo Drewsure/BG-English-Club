@@ -16,6 +16,7 @@ import { BriefingDetail, Briefings } from './components/Briefings';
 import { Offers } from './components/Offers';
 import { Partnerships } from './components/Partnerships';
 import { TablePlayDevice } from './components/TablePlayDevice';
+import { WeeklyNote } from './components/WeeklyNote';
 import { PlainAnswer } from './components/PlainAnswer';
 import type { Language } from './lib/i18n';
 
@@ -28,6 +29,7 @@ export type Section =
   | 'offers'
   | 'partnerships'
   | 'play'
+  | 'weekly-note'
   | 'briefing-detail'
   | 'dossier'
   | 'board'
@@ -41,7 +43,7 @@ const sectionFromHash = (): Section => {
   const hash = window.location.hash.replace('#', '');
   const route = hash.split('?')[0] as Section;
   if (route.startsWith('briefings/')) return 'briefing-detail';
-  const valid: Section[] = ['home', 'situation', 'armory', 'games', 'briefings', 'offers', 'partnerships', 'play', 'dossier', 'board', 'challenges', 'ranking', 'profile', 'silver-circle', 'admin-images'];
+  const valid: Section[] = ['home', 'situation', 'armory', 'games', 'briefings', 'offers', 'partnerships', 'play', 'weekly-note', 'dossier', 'board', 'challenges', 'ranking', 'profile', 'silver-circle', 'admin-images'];
   return valid.includes(route) ? route : 'home';
 };
 
@@ -89,6 +91,7 @@ function AppContent() {
       {section === 'offers' && <Offers language={language} onNavigate={navigate} />}
       {section === 'partnerships' && <Partnerships language={language} />}
       {section === 'play' && <TablePlayDevice language={language} onNavigate={navigate} />}
+      {section === 'weekly-note' && <WeeklyNote language={language} />}
       {section === 'briefing-detail' && <BriefingDetail language={language} onNavigate={navigate} slug={briefingSlug} />}
       {section === 'dossier' && <Dossier language={language} />}
       {section === 'ranking' && <Leaderboard onNavigate={navigate} language={language} />}
