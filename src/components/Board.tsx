@@ -1,4 +1,4 @@
-import { Award, BookOpen, ChevronRight, Database, FileText, Image, Radio, Shield, Sparkles, Target, Trophy, Users } from 'lucide-react';
+import { Award, BookOpen, ChevronRight, Database, Image, Radio, Shield, Sparkles, Target, Trophy, Users } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import type { Section } from '../App';
 import { getGames, getGamesNeedingImages } from '../lib/games';
@@ -203,13 +203,6 @@ const boardTranslations = {
     conversationCard: 'Conversation Card',
     successLooksLike: 'Success Looks Like',
     successCopy: 'Someone says a useful sentence because the game made it natural, then notices it after play.',
-    reviewTemplate: [
-      ['01 Pick A Game', 'Which game did the table choose, and why did it fit this group?'],
-      ['02 Briefing Auto-Matched', 'Which briefing card appeared, and what simple rule or theme helped the table?'],
-      ['03 Choose English Goal', 'Which goal did you use: predict, explain, ask, negotiate, or review?'],
-      ['04 Choose Live Question', 'Which one table question helped people speak during play?'],
-      ['05 Print And Record Progress', 'What useful phrase was said, what happened, and what should be tried next time?'],
-    ],
   },
   ja: {
     missionFlow: [
@@ -316,13 +309,6 @@ const boardTranslations = {
     conversationCard: '会話カード',
     successLooksLike: '成功の形',
     successCopy: 'ゲームの流れの中で誰かが使える一文を言い、プレイ後にそれに気づけることです。',
-    reviewTemplate: [
-      ['01 ゲームを選ぶ', 'どのゲームを選びましたか？そのグループに合った理由は？'],
-      ['02 ブリーフィング自動表示', 'どのブリーフィングが出ましたか？役立ったルールやテーマは？'],
-      ['03 英語目標を選ぶ', '予想、説明、質問、相談、ふり返りのどれを使いましたか？'],
-      ['04 ライブ質問を選ぶ', 'どの質問がプレイ中の会話を助けましたか？'],
-      ['05 印刷して進捗を記録する', '言えた表現、起きたこと、次回試すことは何ですか？'],
-    ],
   },
 } as const;
 
@@ -348,7 +334,8 @@ export function Board({ onNavigate, language }: { onNavigate: (section: Section)
 
   const catalogueByTitle = useMemo(() => new Map(games.map((game) => [game.title.toLowerCase(), game])), [games]);
   const filteredMissions = useMemo(() => missionBuilder.filter((mission) => selectedLevel === 'All' || mission.level === selectedLevel), [selectedLevel]);
-  const selectedMission = missionBuilder.find((mission) => mission.title === selectedMissionTitle) ?? missionBuilder[0];
+  const visibleMissions = useMemo(() => filteredMissions.slice(0, 4), [filteredMissions]);
+  const selectedMission = visibleMissions.find((mission) => mission.title === selectedMissionTitle) ?? visibleMissions[0] ?? missionBuilder[0];
   const readyImages = Math.max(games.length - missingImages.length, 0);
   const strategicTitles = games.filter((game) => (game.weight ?? 0) >= 2.5).length;
   const gatewayTitles = games.filter((game) => (game.weight ?? 99) <= 1.8 && (game.duration_minutes ?? 999) <= 45).length;
@@ -575,7 +562,7 @@ export function Board({ onNavigate, language }: { onNavigate: (section: Section)
               </div>
 
               <div className="mt-5 grid gap-4 md:grid-cols-2">
-                {filteredMissions.map((mission) => {
+                {visibleMissions.map((mission) => {
                   const game = catalogueByTitle.get(mission.title.toLowerCase());
                   const active = mission.title === selectedMission.title;
                   const missionText = missionCopyByTitle.get(mission.title) ?? mission;
@@ -679,23 +666,6 @@ export function Board({ onNavigate, language }: { onNavigate: (section: Section)
             </button>
           );
           })}
-        </section>
-
-        <section className="mt-12">
-          <article className="reference-panel overflow-hidden">
-            <div className="border-b border-[#f1d8a5] px-6 py-4">
-              <p className="font-display text-2xl tracking-wide text-[#bd5c24]">{t.sessionReview}</p>
-              <p className="mt-1 text-xs text-[#7a7065]">{t.reviewCopy}</p>
-            </div>
-            <div className="grid gap-3 p-5">
-              {local.reviewTemplate.map(([label, copy]) => (
-                <div key={label} className="rounded border border-[#efd39d] bg-white p-4">
-                  <p className="flex items-center gap-2 font-display text-lg tracking-wide text-[#3d332b]"><FileText size={15} className="text-[#d87522]" /> {label}</p>
-                  <p className="mt-1 text-xs text-[#70665b]">{copy}</p>
-                </div>
-              ))}
-            </div>
-          </article>
         </section>
 
         {missingImages.length > 0 && (
