@@ -178,7 +178,20 @@ class PdfPage {
     });
   }
 
-  card({ x, y, width, height, fill = colors.white, title, label, body, accent = colors.line, selected = false }) {
+  card({
+    x,
+    y,
+    width,
+    height,
+    fill = colors.white,
+    title,
+    label,
+    body,
+    accent = colors.line,
+    selected = false,
+    titleSize = 16,
+    bodySize = 10.5,
+  }) {
     this.rect(x, y - height, width, height, {
       fill,
       stroke: selected ? colors.orange : colors.line,
@@ -188,8 +201,8 @@ class PdfPage {
     }
     let cursor = y - 20;
     if (label) cursor = this.label(label, x + 16, cursor) - 6;
-    if (title) cursor = this.text(title, x + 16, cursor, { size: 16, font: 'F2', color: selected ? colors.copper : colors.ink, maxChars: Math.floor((width - 32) / 7) }) - 4;
-    if (body) this.text(body, x + 16, cursor, { size: 10.5, color: colors.muted, leading: 14, maxChars: Math.floor((width - 32) / 5.4) });
+    if (title) cursor = this.text(title, x + 16, cursor, { size: titleSize, font: 'F2', color: selected ? colors.copper : colors.ink, maxChars: Math.floor((width - 32) / (titleSize * 0.42)) }) - 4;
+    if (body) this.text(body, x + 16, cursor, { size: bodySize, color: colors.muted, leading: bodySize + 3.5, maxChars: Math.floor((width - 32) / (bodySize * 0.52)) });
     this.line(x + 16, y - height + 16, x + width - 16, y - height + 16, accent, 0.8);
   }
 
@@ -216,22 +229,20 @@ class PdfPage {
 
 function drawHeader(pdf, title) {
   const top = page.height - page.margin;
-  pdf.rect(page.margin, top - 104, page.width - page.margin * 2, 104, {
+  pdf.rect(page.margin, top - 78, page.width - page.margin * 2, 78, {
     fill: colors.panel,
     stroke: colors.line,
   });
-  pdf.rect(page.margin + 18, top - 86, 104, 54, {
+  pdf.rect(page.margin + 18, top - 61, 88, 42, {
     fill: colors.white,
     stroke: colors.line,
   });
-  pdf.image('Logo', page.margin + 22, top - 82, 96, 46);
-  pdf.label('Board Game English Club - Fukuoka Chapter', page.margin + 142, top - 28);
-  pdf.text(title, page.margin + 142, top - 54, {
-    size: 27,
+  pdf.image('Logo', page.margin + 22, top - 58, 80, 36);
+  pdf.label('Board Game English Club - Fukuoka Chapter', page.margin + 122, top - 25);
+  pdf.text(title, page.margin + 122, top - 48, {
+    size: 18,
     font: 'F2',
     color: colors.copper,
-    maxChars: 24,
-    leading: 30,
   });
 }
 
@@ -248,7 +259,7 @@ function createPageOne() {
   const left = page.margin;
   const right = page.width - page.margin;
   const width = right - left;
-  let y = page.height - 170;
+  let y = page.height - 142;
 
   pdf.rect(left, y - 112, width, 112, {
     fill: colors.bluePanel,
@@ -316,6 +327,8 @@ function createPageOne() {
     title: briefing.selected.level,
     body: 'Short, safe phrases for first use.',
     selected: true,
+    titleSize: 13,
+    bodySize: 8.5,
   });
   pdf.card({
     x: left + 184,
@@ -327,6 +340,8 @@ function createPageOne() {
     title: briefing.selected.goal,
     body: 'Say why you put a piece in one place.',
     selected: true,
+    titleSize: 13,
+    bodySize: 8.5,
   });
   pdf.card({
     x: left + 368,
@@ -338,6 +353,8 @@ function createPageOne() {
     title: briefing.selected.question,
     body: 'Ask once during play.',
     selected: true,
+    titleSize: 13,
+    bodySize: 8.5,
   });
 
   drawFooter(pdf, 1);
@@ -351,7 +368,7 @@ function createPageTwo() {
   const left = page.margin;
   const right = page.width - page.margin;
   const width = right - left;
-  let y = page.height - 170;
+  let y = page.height - 142;
 
   pdf.text('Useful Phrases', left, y, { size: 22, font: 'F2', color: colors.copper });
   pdf.text('Choose one phrase first. The aim is real use, not perfect grammar.', left, y - 21, { size: 10.5, color: colors.muted });
@@ -375,7 +392,7 @@ function createPageTwo() {
     });
   });
 
-  y -= 267;
+  y -= 330;
   pdf.text('After The Game', left, y, { size: 22, font: 'F2', color: colors.copper });
   pdf.rect(left, y - 150, width, 116, { fill: colors.pinkPanel, stroke: [0.93, 0.74, 0.80] });
   pdf.label('Record Progress', left + 18, y - 54);
