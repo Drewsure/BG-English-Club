@@ -273,20 +273,6 @@ function createPageOne() {
   });
   pdf.line(left + 124, y - 96, right - 18, y - 96, [0.45, 0.64, 0.91], 0.8);
 
-  /*
-  pdf.card({
-    x: left,
-    y,
-    width,
-    height: 92,
-    fill: colors.bluePanel,
-    label: 'Game',
-    title: briefing.game,
-    body: briefing.theme,
-    accent: [0.45, 0.64, 0.91],
-  });
-  */
-
   y -= 132;
   pdf.card({
     x: left,
@@ -389,7 +375,7 @@ function createPageTwo() {
     });
   });
 
-  y -= 330;
+  y -= 267;
   pdf.text('After The Game', left, y, { size: 22, font: 'F2', color: colors.copper });
   pdf.rect(left, y - 150, width, 116, { fill: colors.pinkPanel, stroke: [0.93, 0.74, 0.80] });
   pdf.label('Record Progress', left + 18, y - 54);
@@ -400,19 +386,6 @@ function createPageTwo() {
   pdf.text('Next time:', left + 18, y - 132, { size: 11, font: 'F2', color: colors.ink });
   pdf.line(left + 82, y - 134, right - 20, y - 134, colors.line, 0.8);
 
-  pdf.card({
-    x: left,
-    y: 170,
-    width,
-    height: 82,
-    fill: colors.panel,
-    label: 'Join BG English Club Briefing',
-    title: 'More printable game cards',
-    body: 'One free sample PDF. Full briefing group: 500 yen / month. Current cards plus new cards as they become available.',
-    accent: colors.orange,
-  });
-
-  drawFooter(pdf, 2);
   return pdf.content();
 }
 
