@@ -13,7 +13,8 @@
     "seo:audit": "node scripts/seo-audit.mjs",
     "seo:build-pages": "node scripts/build-static-seo-pages.mjs",
     "pdf:sample-ja": "node scripts/create-briefing-sample-ja-pdf.mjs",
-    "weekly:draft": "node scripts/create-weekly-blog-draft.mjs"
+    "weekly:draft": "node scripts/create-weekly-blog-draft.mjs",
+    "pdf:weekly-note": "node scripts/create-weekly-note-pdfs.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",

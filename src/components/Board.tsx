@@ -1,7 +1,6 @@
-import { Award, BookOpen, ChevronRight, Clock, Database, FileText, Image, Radio, Shield, Sparkles, Target, Trophy, Users } from 'lucide-react';
+import { Award, BookOpen, ChevronRight, Database, FileText, Image, Radio, Shield, Sparkles, Target, Trophy, Users } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import type { Section } from '../App';
-import { buildGameBrief } from '../lib/gameBriefs';
 import { getGames, getGamesNeedingImages } from '../lib/games';
 import type { Language } from '../lib/i18n';
 import { ui } from '../lib/i18n';
@@ -15,10 +14,11 @@ const commands: Array<{ icon: typeof Database; label: string; copy: string; sect
 ];
 
 const missionFlow: Array<{ label: string; title: string; verb: string; copy: string; section: Section; icon: typeof Database; visual: string; image: string }> = [
-  { label: '01', title: 'Choose A Game', verb: 'Browse Games', copy: 'Choose one board game that fits the group: time, difficulty, theme, and player count.', section: 'games', icon: Database, visual: 'Game Choice', image: '/images/mission-route-pick-game.svg' },
-  { label: '02', title: 'Use One Briefing Goal', verb: 'Open Table Play Tool', copy: 'Use the briefing card to choose one practical aim: predict, explain, ask, negotiate, or review.', section: 'play', icon: Target, visual: 'English Goal', image: '/images/mission-route-english-job.svg' },
-  { label: '03', title: 'Play With Support', verb: 'Choose A Conversation Card', copy: 'During play, use the prompt. The game gives everyone a reason to speak.', section: 'play', icon: Shield, visual: 'Supported Play', image: '/images/mission-route-live-challenge.svg' },
-  { label: '04', title: 'Review Together', verb: 'Record Progress', copy: 'After play, notice what English appeared and choose one small thing for next time.', section: 'profile', icon: Trophy, visual: 'Session Review', image: '/images/mission-route-record-result.svg' },
+  { label: '01', title: 'Pick A Game', verb: 'Browse Games', copy: 'Choose one board game that fits the group: time, difficulty, theme, and player count.', section: 'games', icon: Database, visual: 'Game Choice', image: '/images/mission-route-pick-game.svg' },
+  { label: '02', title: 'Briefing Auto-Matched', verb: 'Open Table Play Tool', copy: 'The Table Play Tool connects the game to the matching briefing card.', section: 'play', icon: BookOpen, visual: 'Briefing Match', image: '/images/mission-route-english-job.svg' },
+  { label: '03', title: 'Choose English Goal', verb: 'Pick One Focus', copy: 'Choose one practical aim: predict, explain, ask, negotiate, or review.', section: 'play', icon: Target, visual: 'English Goal', image: '/images/mission-route-english-job.svg' },
+  { label: '04', title: 'Choose Live Question', verb: 'Use One Prompt', copy: 'Pick one live table question so the game gives everyone a reason to speak.', section: 'play', icon: Shield, visual: 'Live Question', image: '/images/mission-route-live-challenge.svg' },
+  { label: '05', title: 'Print And Record Progress', verb: 'Record Progress', copy: 'Print the table aid, then record one phrase, one table moment, and one next step.', section: 'profile', icon: Trophy, visual: 'Progress Record', image: '/images/mission-route-record-result.svg' },
 ];
 
 type MissionLevel = 'Foundation' | 'Intermediate' | 'Advanced' | 'Master';
@@ -204,19 +204,20 @@ const boardTranslations = {
     successLooksLike: 'Success Looks Like',
     successCopy: 'Someone says a useful sentence because the game made it natural, then notices it after play.',
     reviewTemplate: [
-      ['Situation', 'What was happening on the board?'],
-      ['Decision', 'What did you choose and why?'],
-      ['Language', 'Which phrases or vocabulary appeared naturally?'],
-      ['Result', 'What changed because of the decision?'],
-      ['Next Time', 'What would be useful to try next time?'],
+      ['01 Pick A Game', 'Which game did the table choose, and why did it fit this group?'],
+      ['02 Briefing Auto-Matched', 'Which briefing card appeared, and what simple rule or theme helped the table?'],
+      ['03 Choose English Goal', 'Which goal did you use: predict, explain, ask, negotiate, or review?'],
+      ['04 Choose Live Question', 'Which one table question helped people speak during play?'],
+      ['05 Print And Record Progress', 'What useful phrase was said, what happened, and what should be tried next time?'],
     ],
   },
   ja: {
     missionFlow: [
       { title: 'ゲームを選ぶ', verb: 'ゲームを見る', copy: '時間、難しさ、テーマ、人数に合うボードゲームを一つ選びます。', visual: 'ゲーム選び' },
-      { title: '英語フォーカスを一つ選ぶ', verb: 'フォーカスを選ぶ', copy: '説明する、質問する、提案する、報告する、ふり返るなど、一つだけ選びます。', visual: '英語フォーカス' },
-      { title: 'サポート付きで遊ぶ', verb: '会話カードを使う', copy: 'プレイ中にプロンプトを使います。ゲームが話す理由を作ります。', visual: 'サポートプレイ' },
-      { title: '一緒にふり返る', verb: '進捗を記録する', copy: 'プレイ後に、出てきた英語に気づき、次回の小さな目標を選びます。', visual: 'セッション記録' },
+      { title: 'ブリーフィング自動表示', verb: 'Table Play Tool を開く', copy: 'ゲームに合うブリーフィングカードが自動でつながります。', visual: 'ブリーフィング' },
+      { title: '英語目標を選ぶ', verb: 'フォーカスを選ぶ', copy: '説明する、質問する、提案する、報告する、ふり返るなど、一つだけ選びます。', visual: '英語目標' },
+      { title: 'ライブ質問を選ぶ', verb: '質問を一つ使う', copy: 'プレイ中に使う質問を一つ選び、話す理由を作ります。', visual: 'ライブ質問' },
+      { title: '印刷して進捗を記録する', verb: '進捗を記録する', copy: 'テーブル用紙を印刷し、使えた表現、起きたこと、次回の一歩を記録します。', visual: '進捗記録' },
     ],
     sessionBuilder: 'セッションビルダー',
     sessionBuilderTitle: 'ゲーム + 英語フォーカス + 会話カード',
@@ -316,21 +317,14 @@ const boardTranslations = {
     successLooksLike: '成功の形',
     successCopy: 'ゲームの流れの中で誰かが使える一文を言い、プレイ後にそれに気づけることです。',
     reviewTemplate: [
-      ['状況', 'ボード上で何が起きていましたか？'],
-      ['判断', '何を選びましたか？その理由は？'],
-      ['言葉', '自然に出てきたフレーズや語彙は何ですか？'],
-      ['結果', 'その判断で何が変わりましたか？'],
-      ['次回', '次に試すと役に立ちそうなことは何ですか？'],
+      ['01 ゲームを選ぶ', 'どのゲームを選びましたか？そのグループに合った理由は？'],
+      ['02 ブリーフィング自動表示', 'どのブリーフィングが出ましたか？役立ったルールやテーマは？'],
+      ['03 英語目標を選ぶ', '予想、説明、質問、相談、ふり返りのどれを使いましたか？'],
+      ['04 ライブ質問を選ぶ', 'どの質問がプレイ中の会話を助けましたか？'],
+      ['05 印刷して進捗を記録する', '言えた表現、起きたこと、次回試すことは何ですか？'],
     ],
   },
 } as const;
-
-function pickRecommended(games: Game[]) {
-  const names = ['Brass: Birmingham', 'Power Grid', 'Carcassonne', 'Pandemic', 'Terraforming Mars', 'Modern Art'];
-  return names
-    .map((name) => games.find((game) => game.title.toLowerCase() === name.toLowerCase()))
-    .filter(Boolean) as Game[];
-}
 
 export function Board({ onNavigate, language }: { onNavigate: (section: Section) => void; language: Language }) {
   const [games, setGames] = useState<Game[]>([]);
@@ -352,7 +346,6 @@ export function Board({ onNavigate, language }: { onNavigate: (section: Section)
     return subscribeToPreviewGameUpdates(load);
   }, []);
 
-  const recommended = useMemo(() => pickRecommended(games), [games]);
   const catalogueByTitle = useMemo(() => new Map(games.map((game) => [game.title.toLowerCase(), game])), [games]);
   const filteredMissions = useMemo(() => missionBuilder.filter((mission) => selectedLevel === 'All' || mission.level === selectedLevel), [selectedLevel]);
   const selectedMission = missionBuilder.find((mission) => mission.title === selectedMissionTitle) ?? missionBuilder[0];
@@ -688,28 +681,7 @@ export function Board({ onNavigate, language }: { onNavigate: (section: Section)
           })}
         </section>
 
-        <section className="mt-12 grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
-          <article className="reference-panel overflow-hidden">
-            <div className="border-b border-[#f1d8a5] px-6 py-4">
-              <p className="font-display text-2xl tracking-wide text-[#bd5c24]">{t.goodChoices}</p>
-              <p className="mt-1 text-xs text-[#7a7065]">{t.goodChoicesCopy}</p>
-            </div>
-            <div className="divide-y divide-[#f3dfba]">
-              {recommended.map((game) => (
-                <button key={game.id} onClick={() => onNavigate('games')} className="flex w-full gap-4 px-5 py-4 text-left transition hover:bg-[#fff8e9]">
-                  <div className="h-20 w-24 shrink-0 overflow-hidden rounded border border-[#efd39d] bg-[#fff0ce]">
-                    {game.cover_image_url ? <img src={game.cover_image_url} alt="" className="h-full w-full object-cover" /> : <div className="flex h-full items-center justify-center px-2 text-center font-display text-sm text-[#ae6d3f]">{game.title}</div>}
-                  </div>
-                  <span>
-                    <span className="font-display text-lg tracking-wide text-[#3d332b]">{game.title}</span>
-                    <span className="mt-1 line-clamp-2 block text-xs leading-5 text-[#70665b]">{buildGameBrief(game)}</span>
-                    <span className="mt-2 inline-flex items-center gap-3 text-[10px] text-[#936f46]"><Clock size={12} /> {game.duration_minutes ?? '-'}m <Users size={12} /> {game.min_players ?? '-'}-{game.max_players ?? '-'} <Trophy size={12} /> {game.bgg_rank ? `#${game.bgg_rank}` : 'Unranked'}</span>
-                  </span>
-                </button>
-              ))}
-            </div>
-          </article>
-
+        <section className="mt-12">
           <article className="reference-panel overflow-hidden">
             <div className="border-b border-[#f1d8a5] px-6 py-4">
               <p className="font-display text-2xl tracking-wide text-[#bd5c24]">{t.sessionReview}</p>

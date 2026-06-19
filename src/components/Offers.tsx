@@ -46,6 +46,7 @@ const copy = {
         subject: 'Silver Circle membership',
         body: 'I am interested in Silver Circle membership.\n\nName:\nPreferred area/day:\nQuestions:',
         bullets: ['Gentle pace', 'Japanese support available', 'Small recurring group'],
+        image: '/images/silver-circle-hero.webp',
       },
       {
         icon: Users,
@@ -57,6 +58,7 @@ const copy = {
         subject: 'English game table trial',
         body: 'I would like to try an English game table.\n\nName:\nNumber of people:\nPreferred date:',
         bullets: ['Beginner friendly', 'Parent-child welcome', 'Simple games first'],
+        image: '/images/drew-community-sakura.jpg',
       },
       {
         icon: Crown,
@@ -68,6 +70,7 @@ const copy = {
         subject: 'Private strategy English coaching',
         body: 'I am interested in private strategy English coaching.\n\nName:\nGoal:\nPreferred time:',
         bullets: ['Focused adult practice', 'Strategy-based English', 'Clear review notes'],
+        image: '/images/collection/3076.jpg',
       },
       {
         icon: Briefcase,
@@ -79,6 +82,7 @@ const copy = {
         subject: 'Workshop booking inquiry',
         body: 'I would like to discuss a BG English Club corporate or community workshop.\n\nOrganization:\nAudience:\nPossible date:\nBudget:',
         bullets: ['Team communication', 'Soft-skill practice', 'Bilingual facilitation available'],
+        image: '/images/weekly-note/table-note-001.png',
       },
       {
         icon: BookOpen,
@@ -90,6 +94,7 @@ const copy = {
         subject: 'Join BG English Club Briefing',
         body: 'I would like to join BG English Club Briefing for ¥500 / month.\n\nName:\nI am a teacher / parent / game group:\nHow I plan to use the briefings:',
         bullets: ['One free sample PDF', 'Updated weekly', 'Printable table aids'],
+        image: '/images/collection/2453.jpg',
       },
       {
         icon: CalendarDays,
@@ -101,6 +106,7 @@ const copy = {
         subject: 'Seasonal event table',
         body: 'I would like to discuss a seasonal event table.\n\nGroup size:\nTheme:\nPreferred date:',
         bullets: ['Good for groups', 'Seasonal themes', 'Easy first event'],
+        image: '/images/culture/hanafuda.jpg',
       },
     ],
     ladder: [
@@ -159,6 +165,7 @@ const copy = {
         subject: 'Silver Circle 月会費について',
         body: 'Silver Circle に興味があります。\n\nお名前：\n希望地域・曜日：\n質問：',
         bullets: ['やさしいペース', '日本語サポート可', '少人数の定期グループ'],
+        image: '/images/silver-circle-hero.webp',
       },
       {
         icon: Users,
@@ -170,6 +177,7 @@ const copy = {
         subject: '英語ゲームテーブル体験',
         body: '英語ゲームテーブルを体験したいです。\n\nお名前：\n人数：\n希望日：',
         bullets: ['初心者歓迎', '親子参加歓迎', 'シンプルなゲームから'],
+        image: '/images/drew-community-sakura.jpg',
       },
       {
         icon: Crown,
@@ -181,6 +189,7 @@ const copy = {
         subject: '個別ストラテジー英語について',
         body: '個別ストラテジー英語に興味があります。\n\nお名前：\n目標：\n希望時間：',
         bullets: ['大人向け集中練習', '戦略ゲームで英語', '振り返りメモ付き'],
+        image: '/images/collection/3076.jpg',
       },
       {
         icon: Briefcase,
@@ -192,6 +201,7 @@ const copy = {
         subject: 'ワークショップ相談',
         body: 'BG English Club の企業・地域ワークショップについて相談したいです。\n\n団体名：\n対象者：\n希望日：\n予算：',
         bullets: ['チーム会話', 'ソフトスキル練習', '日本語サポート可'],
+        image: '/images/weekly-note/table-note-001.png',
       },
       {
         icon: BookOpen,
@@ -203,6 +213,7 @@ const copy = {
         subject: 'BG English Club Briefing 参加希望',
         body: '月 ¥500 の BG English Club Briefing に参加したいです。\n\nお名前：\n英語講師 / 保護者 / ゲーム会：\n使い方：',
         bullets: ['無料サンプルPDFあり', '毎週更新', '印刷用テーブル教材'],
+        image: '/images/collection/2453.jpg',
       },
       {
         icon: CalendarDays,
@@ -214,6 +225,7 @@ const copy = {
         subject: '季節イベントテーブルについて',
         body: '季節イベントテーブルについて相談したいです。\n\n人数：\nテーマ：\n希望日：',
         bullets: ['グループ向き', '季節テーマ可', '初回イベントに使いやすい'],
+        image: '/images/culture/hanafuda.jpg',
       },
     ],
     ladder: [
@@ -300,6 +312,9 @@ export function Offers({ language, onNavigate }: { language: Language; onNavigat
             const link = mailto(product.subject, product.body);
             return (
               <article key={product.name} className="reference-panel flex flex-col p-5">
+                <div className="mb-4 h-40 overflow-hidden rounded-xl border border-[#efd39d] bg-[#fff4df]">
+                  <img src={product.image} alt="" className="h-full w-full object-cover" />
+                </div>
                 <div className="flex items-start justify-between gap-4">
                   <Icon className="text-[#d87522]" size={27} />
                   <span className="rounded-full border border-[#efd39d] bg-[#fff8ea] px-3 py-1 text-xs font-bold text-[#bd5c24]">{product.price}</span>
