@@ -6,6 +6,7 @@ const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const output = join(root, 'public', 'downloads', 'bg-english-club-briefing-sample.pdf');
 const logoPath = join(root, 'public', 'images', 'board-english-logo-cropped.jpeg');
 const gameImagePath = join(root, 'public', 'images', 'collection', '2453.jpg');
+const qrPath = join(root, 'public', 'images', 'member-profile-qr.jpg');
 
 const page = {
   width: 595.28,
@@ -42,7 +43,7 @@ const briefing = {
   ],
   selected: {
     level: 'Beginner',
-    goal: 'Explain A Choice',
+    goal: 'Predict And React',
     question: 'Where are you placing it?',
   },
   phrases: [
@@ -114,6 +115,7 @@ function jpegSize(buffer) {
 const imageAssets = [
   { name: 'Logo', bytes: readFileSync(logoPath) },
   { name: 'GameCover', bytes: readFileSync(gameImagePath) },
+  { name: 'MemberQr', bytes: readFileSync(qrPath) },
 ].map((asset) => ({
   ...asset,
   ...jpegSize(asset.bytes),
@@ -397,11 +399,15 @@ function createPageTwo() {
   pdf.rect(left, y - 150, width, 116, { fill: colors.pinkPanel, stroke: [0.93, 0.74, 0.80] });
   pdf.label('Record Progress', left + 18, y - 54);
   pdf.text('Useful phrase I said:', left + 18, y - 76, { size: 11, font: 'F2', color: colors.ink });
-  pdf.line(left + 130, y - 78, right - 20, y - 78, colors.line, 0.8);
+  pdf.line(left + 130, y - 78, right - 116, y - 78, colors.line, 0.8);
   pdf.text('What happened:', left + 18, y - 104, { size: 11, font: 'F2', color: colors.ink });
-  pdf.line(left + 112, y - 106, right - 20, y - 106, colors.line, 0.8);
+  pdf.line(left + 112, y - 106, right - 116, y - 106, colors.line, 0.8);
   pdf.text('Next time:', left + 18, y - 132, { size: 11, font: 'F2', color: colors.ink });
-  pdf.line(left + 82, y - 134, right - 20, y - 134, colors.line, 0.8);
+  pdf.line(left + 82, y - 134, right - 116, y - 134, colors.line, 0.8);
+  pdf.rect(right - 92, y - 140, 70, 70, { fill: colors.white, stroke: colors.line });
+  pdf.image('MemberQr', right - 88, y - 136, 62, 62);
+  pdf.label('Scan To Save', right - 98, y - 52);
+  pdf.text('Member Profile', right - 98, y - 64, { size: 8.5, font: 'F2', color: colors.ink });
 
   return pdf.content();
 }

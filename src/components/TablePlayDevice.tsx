@@ -81,14 +81,14 @@ const flowSteps = [
   { label: '02', title: 'Briefing Auto-Matched', jaTitle: 'ブリーフィングを確認', icon: BookOpen },
   { label: '03', title: 'Choose English Goal', jaTitle: '英語目標を選ぶ', icon: Target },
   { label: '04', title: 'Choose Live Question', jaTitle: '質問を一つ選ぶ', icon: MessageCircle },
-  { label: '05', title: 'Record Progress', jaTitle: '進捗を記録する', icon: Trophy },
+  { label: '05', title: 'Print And Record Progress', jaTitle: '印刷して進捗を記録する', icon: Printer },
 ];
 
 const tablePlayTranslations = {
   en: {
     eyebrow: 'Choose And Play Process',
     title: 'Table Play Tool',
-    intro: 'Pick a game and the matching briefing appears automatically. Then choose a level, choose one English goal, pick one live table question, and record what happened.',
+    intro: 'Pick a game and the matching briefing appears automatically. Then choose a level, choose one English goal, pick one live table question, print the table aid, and record what happened.',
     step: 'Step',
     pickGame: 'Pick A Game',
     searchGames: 'Search games...',
@@ -119,7 +119,7 @@ const tablePlayTranslations = {
     chooseQuestionCopy: 'Pick one question to use during play; the useful phrases already live in the briefing level above.',
     conversationCard: 'Conversation Card',
     liveQuestion: 'Live table question',
-    recordProgress: 'Step 5: Record Progress',
+    recordProgress: 'Step 5: Print And Record Progress',
     usefulPhraseLabel: 'Useful phrase you actually said',
     whatHappenedLabel: 'What happened at the table?',
     nextTimeLabel: 'Next time',
@@ -138,7 +138,7 @@ const tablePlayTranslations = {
   ja: {
     eyebrow: '選んで遊ぶ流れ',
     title: 'テーブル練習ツール',
-    intro: 'ゲームを選ぶと、合うブリーフィングが自動で表示されます。レベル、英語目標、テーブル質問を一つずつ選び、最後に記録します。',
+    intro: 'ゲームを選ぶと、合うブリーフィングが自動で表示されます。レベル、英語目標、テーブル質問を一つずつ選び、印刷して、最後に記録します。',
     step: 'ステップ',
     pickGame: 'ゲームを選ぶ',
     searchGames: 'ゲームを検索...',
@@ -169,7 +169,7 @@ const tablePlayTranslations = {
     chooseQuestionCopy: 'プレイ中に使う質問を一つ選びます。使えるフレーズは上のレベル内にあります。',
     conversationCard: '会話カード',
     liveQuestion: 'テーブル質問',
-    recordProgress: 'ステップ5：進捗を記録する',
+    recordProgress: 'ステップ5：印刷して進捗を記録する',
     usefulPhraseLabel: '実際に言えたフレーズ',
     whatHappenedLabel: 'テーブルで何が起きましたか？',
     nextTimeLabel: '次回',
