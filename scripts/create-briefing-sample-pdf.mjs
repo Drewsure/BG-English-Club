@@ -1,9 +1,11 @@
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const output = join(root, 'public', 'downloads', 'bg-english-club-briefing-sample.pdf');
+const logoPath = join(root, 'public', 'images', 'board-english-logo-cropped.jpeg');
+const gameImagePath = join(root, 'public', 'images', 'collection', '2453.jpg');
 
 const page = {
   width: 595.28,
@@ -92,6 +94,31 @@ function wrapText(text, maxChars) {
   return lines;
 }
 
+function jpegSize(buffer) {
+  let index = 2;
+  while (index < buffer.length) {
+    if (buffer[index] !== 0xff) break;
+    const marker = buffer[index + 1];
+    const length = buffer.readUInt16BE(index + 2);
+    if (marker >= 0xc0 && marker <= 0xc3) {
+      return {
+        height: buffer.readUInt16BE(index + 5),
+        width: buffer.readUInt16BE(index + 7),
+      };
+    }
+    index += 2 + length;
+  }
+  throw new Error('Could not read JPEG dimensions.');
+}
+
+const imageAssets = [
+  { name: 'Logo', bytes: readFileSync(logoPath) },
+  { name: 'GameCover', bytes: readFileSync(gameImagePath) },
+].map((asset) => ({
+  ...asset,
+  ...jpegSize(asset.bytes),
+}));
+
 class PdfPage {
   constructor() {
     this.commands = [];
@@ -115,6 +142,10 @@ class PdfPage {
   line(x1, y1, x2, y2, color = colors.line, width = 1) {
     this.stroke(color);
     this.commands.push(`${width} w ${x1} ${y1} m ${x2} ${y2} l S`);
+  }
+
+  image(name, x, y, width, height) {
+    this.commands.push('q', `${width} 0 0 ${height} ${x} ${y} cm`, `/${name} Do`, 'Q');
   }
 
   text(value, x, y, options = {}) {
@@ -183,37 +214,24 @@ class PdfPage {
   }
 }
 
-function drawHeader(pdf, title, subtitle) {
+function drawHeader(pdf, title) {
   const top = page.height - page.margin;
   pdf.rect(page.margin, top - 104, page.width - page.margin * 2, 104, {
     fill: colors.panel,
     stroke: colors.line,
   });
-  pdf.label('Board Game English Club - Fukuoka Chapter', page.margin + 20, top - 24);
-  pdf.text(title, page.margin + 20, top - 48, {
+  pdf.rect(page.margin + 18, top - 86, 104, 54, {
+    fill: colors.white,
+    stroke: colors.line,
+  });
+  pdf.image('Logo', page.margin + 22, top - 82, 96, 46);
+  pdf.label('Board Game English Club - Fukuoka Chapter', page.margin + 142, top - 28);
+  pdf.text(title, page.margin + 142, top - 54, {
     size: 27,
     font: 'F2',
     color: colors.copper,
-    maxChars: 31,
+    maxChars: 24,
     leading: 30,
-  });
-  pdf.text(subtitle, page.margin + 20, top - 88, {
-    size: 11,
-    color: colors.muted,
-    maxChars: 64,
-  });
-  pdf.rect(page.width - page.margin - 92, top - 86, 66, 48, {
-    fill: colors.white,
-    stroke: colors.orange,
-  });
-  pdf.text('A4', page.width - page.margin - 75, top - 56, {
-    size: 17,
-    font: 'F2',
-    color: colors.orange,
-  });
-  pdf.text('no bleed', page.width - page.margin - 80, top - 73, {
-    size: 9,
-    color: colors.muted,
   });
 }
 
@@ -225,13 +243,37 @@ function drawFooter(pdf, pageNumber) {
 
 function createPageOne() {
   const pdf = new PdfPage();
-  drawHeader(pdf, briefing.title, 'A printable table guide that keeps the same card-based feel as the website.');
+  drawHeader(pdf, briefing.title);
 
   const left = page.margin;
   const right = page.width - page.margin;
   const width = right - left;
   let y = page.height - 170;
 
+  pdf.rect(left, y - 112, width, 112, {
+    fill: colors.bluePanel,
+    stroke: colors.line,
+  });
+  pdf.rect(left + 16, y - 96, 88, 72, {
+    fill: colors.white,
+    stroke: colors.line,
+  });
+  pdf.image('GameCover', left + 20, y - 92, 80, 64);
+  pdf.label('Game', left + 124, y - 22);
+  pdf.text(briefing.game, left + 124, y - 46, {
+    size: 19,
+    font: 'F2',
+    color: colors.ink,
+  });
+  pdf.text(briefing.theme, left + 124, y - 67, {
+    size: 10.5,
+    color: colors.muted,
+    leading: 14,
+    maxChars: 68,
+  });
+  pdf.line(left + 124, y - 96, right - 18, y - 96, [0.45, 0.64, 0.91], 0.8);
+
+  /*
   pdf.card({
     x: left,
     y,
@@ -243,8 +285,9 @@ function createPageOne() {
     body: briefing.theme,
     accent: [0.45, 0.64, 0.91],
   });
+  */
 
-  y -= 112;
+  y -= 132;
   pdf.card({
     x: left,
     y,
@@ -317,7 +360,7 @@ function createPageOne() {
 
 function createPageTwo() {
   const pdf = new PdfPage();
-  drawHeader(pdf, 'Table Language Sheet', 'Print this page with the briefing and place it beside the game board.');
+  drawHeader(pdf, 'Table Language Sheet');
 
   const left = page.margin;
   const right = page.width - page.margin;
@@ -373,16 +416,19 @@ function createPageTwo() {
   return pdf.content();
 }
 
-function buildPdf(pageContents) {
+function buildPdf(pageContents, images) {
   const objects = [
     '<< /Type /Catalog /Pages 2 0 R >>',
     `<< /Type /Pages /Kids [${pageContents.map((_, index) => `${3 + index} 0 R`).join(' ')}] /Count ${pageContents.length} >>`,
   ];
 
   const contentObjectStart = 3 + pageContents.length;
+  const fontObjectStart = contentObjectStart + pageContents.length;
+  const imageObjectStart = fontObjectStart + 2;
+  const imageResources = images.map((image, index) => `/${image.name} ${imageObjectStart + index} 0 R`).join(' ');
   pageContents.forEach((_, index) => {
     const contentRef = contentObjectStart + index;
-    objects.push(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${page.width} ${page.height}] /Resources << /Font << /F1 ${contentObjectStart + pageContents.length} 0 R /F2 ${contentObjectStart + pageContents.length + 1} 0 R >> >> /Contents ${contentRef} 0 R >>`);
+    objects.push(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${page.width} ${page.height}] /Resources << /Font << /F1 ${fontObjectStart} 0 R /F2 ${fontObjectStart + 1} 0 R >> /XObject << ${imageResources} >> >> /Contents ${contentRef} 0 R >>`);
   });
 
   pageContents.forEach((content) => {
@@ -392,23 +438,38 @@ function buildPdf(pageContents) {
   objects.push('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>');
   objects.push('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>');
 
-  let pdf = '%PDF-1.4\n';
-  const offsets = [0];
-  objects.forEach((object, index) => {
-    offsets[index + 1] = Buffer.byteLength(pdf, 'utf8');
-    pdf += `${index + 1} 0 obj\n${object}\nendobj\n`;
+  images.forEach((image) => {
+    objects.push({
+      header: `<< /Type /XObject /Subtype /Image /Width ${image.width} /Height ${image.height} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${image.bytes.length} >>\nstream\n`,
+      bytes: image.bytes,
+      footer: '\nendstream',
+    });
   });
 
-  const xrefOffset = Buffer.byteLength(pdf, 'utf8');
-  pdf += `xref\n0 ${objects.length + 1}\n`;
-  pdf += '0000000000 65535 f \n';
+  let pdf = Buffer.from('%PDF-1.4\n', 'utf8');
+  const offsets = [0];
+  objects.forEach((object, index) => {
+    offsets[index + 1] = pdf.length;
+    const objectBuffer = typeof object === 'string'
+      ? Buffer.from(`${index + 1} 0 obj\n${object}\nendobj\n`, 'utf8')
+      : Buffer.concat([
+        Buffer.from(`${index + 1} 0 obj\n${object.header}`, 'utf8'),
+        object.bytes,
+        Buffer.from(`${object.footer}\nendobj\n`, 'utf8'),
+      ]);
+    pdf = Buffer.concat([pdf, objectBuffer]);
+  });
+
+  const xrefOffset = pdf.length;
+  let xref = `xref\n0 ${objects.length + 1}\n`;
+  xref += '0000000000 65535 f \n';
   for (let index = 1; index <= objects.length; index += 1) {
-    pdf += `${String(offsets[index]).padStart(10, '0')} 00000 n \n`;
+    xref += `${String(offsets[index]).padStart(10, '0')} 00000 n \n`;
   }
-  pdf += `trailer\n<< /Size ${objects.length + 1} /Root 1 0 R >>\nstartxref\n${xrefOffset}\n%%EOF\n`;
-  return pdf;
+  xref += `trailer\n<< /Size ${objects.length + 1} /Root 1 0 R >>\nstartxref\n${xrefOffset}\n%%EOF\n`;
+  return Buffer.concat([pdf, Buffer.from(xref, 'utf8')]);
 }
 
 mkdirSync(dirname(output), { recursive: true });
-writeFileSync(output, buildPdf([createPageOne(), createPageTwo()]), 'utf8');
+writeFileSync(output, buildPdf([createPageOne(), createPageTwo()], imageAssets));
 console.log(output);
