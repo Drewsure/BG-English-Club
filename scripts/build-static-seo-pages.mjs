@@ -46,6 +46,60 @@ function pageShell({ lang = 'en', title, description, keywords, canonicalPath, b
 
 const pages = [
   {
+    path: '/blog/',
+    lang: 'en',
+    title: 'Board Game English Blog | Silver Circle, Briefings, And Workshops',
+    description: 'Board Game English Club blog hub for weekly game briefings, Silver Circle conversation ideas, and corporate or teacher workshop notes in Fukuoka.',
+    keywords: 'Board Game English blog, English board games Fukuoka, Silver Circle English, corporate English workshops Fukuoka, ESL board game briefings',
+    priority: '0.9',
+    changefreq: 'weekly',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'Blog',
+      name: 'Board Game English Club Blog',
+      description: 'Weekly game briefings and practical English-through-board-games guides.',
+      publisher: {
+        '@type': 'Organization',
+        name: 'Board Game English Club',
+        email: 'ministarenglish@mail.com',
+      },
+    },
+    body: `
+      <section class="hero">
+        <span class="badge">Board Game English Blog</span>
+        <h1>Weekly game briefings for conversation, community, and workshops.</h1>
+        <p class="soft">Each post turns one board game into simple English rules, useful phrases, one live table question, and a clear next step. The blog has two paths: gentle Silver Circle tables and practical corporate / teacher use.</p>
+        <a class="cta" href="/#briefings">Open the interactive briefing library</a>
+      </section>
+      <h2>Two reading paths</h2>
+      <div class="grid">
+        <article class="card pink">
+          <h3>Silver Circle</h3>
+          <p>Gentle posts for seniors, families, and community tables. These focus on calm conversation, confidence, short phrases, Japanese support, and low-pressure participation.</p>
+          <a href="/silver-circle/">Open Silver Circle</a>
+        </article>
+        <article class="card">
+          <h3>Corporate + Teacher</h3>
+          <p>Practical posts for teachers, facilitators, companies, libraries, cafes, and community groups. These focus on facilitation, team discussion, printable aids, and workshop outcomes.</p>
+          <a href="/corporate-workshops-fukuoka/">Open corporate workshops</a>
+        </article>
+      </div>
+      <h2>Latest briefing</h2>
+      <article class="card">
+        <h3>Blokus English Briefing Card</h3>
+        <p>Beginner-friendly English practice for shape placement, corners, space, blocking, and simple reason-giving.</p>
+        <a class="cta" href="/blog/blokus-english-briefing-card/">Read the briefing</a>
+      </article>
+      <h2>How posts are used</h2>
+      <div class="grid">
+        <article class="card"><strong>Before a session</strong><br />Choose one game, one focus, and one table question.</article>
+        <article class="card"><strong>During play</strong><br />Use short phrases when the game creates a real reason to speak.</article>
+        <article class="card"><strong>After play</strong><br />Save one phrase and one next step in the member profile.</article>
+      </div>
+      <footer><a href="/#offers">Ask about a session or workshop</a></footer>
+    `,
+  },
+  {
     path: '/silver-circle/',
     lang: 'ja',
     title: '福岡市西区 シニア向け英語ボードゲームサークル | Silver Circle',

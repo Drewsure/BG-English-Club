@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, Brain, CalendarDays, Download, MessageCircle, Printer, Search, Sparkles, Users } from 'lucide-react';
+import { ArrowRight, BookOpen, Brain, Briefcase, CalendarDays, Download, Heart, MessageCircle, Printer, Search, Sparkles, Users } from 'lucide-react';
 import { useRef, useState } from 'react';
 import type { Section } from '../App';
 import type { Language } from '../lib/i18n';
@@ -361,6 +361,13 @@ const pageCopy = {
     ],
     cadence: 'New guides added regularly',
     cadenceCopy: 'Start with one game, try the phrases at the table, then come back for more beginner-friendly ideas for English conversation in Fukuoka.',
+    blogFocus: 'Two Blog Paths',
+    blogFocusCopy: 'The same game guide can support two different readers. Silver Circle posts should feel gentle and community-focused. Corporate and teacher posts should feel practical, structured, and ready to use.',
+    silverLane: 'Silver Circle Reading Path',
+    silverLaneCopy: 'Use calm games, social confidence, short phrases, community participation, and low-pressure first tables.',
+    corporateLane: 'Corporate + Teacher Reading Path',
+    corporateLaneCopy: 'Use facilitation notes, communication goals, printable aids, workshop structure, and team conversation outcomes.',
+    contentPromise: 'Each post should help a real person choose, prepare, play, and speak.',
     audience: 'Best For',
     theme: 'Theme Brief',
     why: 'Why It Works For English',
@@ -385,6 +392,13 @@ const pageCopy = {
     ],
     cadence: '新しいガイドを少しずつ追加',
     cadenceCopy: 'まず一つのゲームから試して、テーブルでフレーズを使ってみてください。福岡で英語の会話に使いやすいゲームを少しずつ増やしていきます。',
+    blogFocus: '二つのブログ導線',
+    blogFocusCopy: '同じゲームガイドでも、読む人によって見せ方を分けます。Silver Circle はやさしい地域参加として、企業・先生向けは実用的な進行資料として見せます。',
+    silverLane: 'Silver Circle 向け',
+    silverLaneCopy: '落ち着いたゲーム、会話の安心感、短いフレーズ、地域参加、初めてのテーブルを中心にします。',
+    corporateLane: '企業・先生向け',
+    corporateLaneCopy: '進行メモ、コミュニケーション目標、印刷教材、ワークショップ構成、チーム会話の成果を中心にします。',
+    contentPromise: '各記事は、選ぶ・準備する・遊ぶ・話す、まで助ける内容にします。',
     audience: 'おすすめ対象',
     theme: 'テーマ説明',
     why: '英語に向いている理由',
@@ -451,6 +465,36 @@ export function Briefings({ language, onNavigate }: { language: Language; onNavi
               <Sparkles size={14} /> {t.cta}
             </button>
           </article>
+        </section>
+
+        <section className="mt-8 grid gap-5 lg:grid-cols-[0.75fr_1.25fr]">
+          <article className="reference-panel p-6">
+            <p className="eyebrow">{language === 'ja' ? 'Blog Positioning' : 'Blog Positioning'}</p>
+            <h2 className="font-display mt-3 text-3xl tracking-wide text-[#bd5c24]">{t.blogFocus}</h2>
+            <p className="mt-4 text-sm leading-7 text-[#62584f]">{t.blogFocusCopy}</p>
+            <p className="mt-4 rounded-xl border border-[#efd39d] bg-[#fffaf0] p-4 text-sm font-bold leading-7 text-[#5b4a40]">
+              <Sparkles className="mr-2 inline text-[#d87522]" size={16} />
+              {t.contentPromise}
+            </p>
+          </article>
+          <div className="grid gap-5 md:grid-cols-2">
+            <article className="rounded-2xl border border-[#f4c0cf] bg-[#fff8fb] p-6">
+              <Heart className="text-[#ef3d66]" size={28} />
+              <h3 className="font-display mt-4 text-2xl tracking-wide text-[#3d332b]">{t.silverLane}</h3>
+              <p className="mt-3 text-sm leading-7 text-[#62584f]">{t.silverLaneCopy}</p>
+              <a href="#silver-circle" className="mt-4 inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-wide text-[#ef3d66]">
+                {language === 'ja' ? 'Silver Circle を見る' : 'View Silver Circle'} <ArrowRight size={12} />
+              </a>
+            </article>
+            <article className="rounded-2xl border border-[#b9d2fb] bg-[#f7fbff] p-6">
+              <Briefcase className="text-[#366eb4]" size={28} />
+              <h3 className="font-display mt-4 text-2xl tracking-wide text-[#3d332b]">{t.corporateLane}</h3>
+              <p className="mt-3 text-sm leading-7 text-[#62584f]">{t.corporateLaneCopy}</p>
+              <a href="#partnerships" className="mt-4 inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-wide text-[#366eb4]">
+                {language === 'ja' ? '企業・団体向けを見る' : 'View Corporate Options'} <ArrowRight size={12} />
+              </a>
+            </article>
+          </div>
         </section>
 
         <section className="mt-10">

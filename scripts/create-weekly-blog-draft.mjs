@@ -19,6 +19,7 @@ function slugify(value) {
 
 const game = readArg('game', 'New Game');
 const date = readArg('date', new Date().toISOString().slice(0, 10));
+const lane = readArg('lane', 'silver-corporate');
 const slug = `${slugify(game)}-english-briefing-card`;
 const outDir = join(process.cwd(), 'content', 'weekly-drafts');
 const outPath = join(outDir, `${date}-${slug}.md`);
@@ -27,6 +28,7 @@ const draft = `# ${game} English Briefing Card
 
 Date: ${date}
 Status: Draft
+Content lane: ${lane}
 Public URL target: /blog/${slug}.html
 Interactive URL target: /#briefings/${slug}
 
@@ -50,6 +52,15 @@ ${game} can be used for English conversation practice because the table naturall
 ## Game Summary
 
 Write 2-3 plain sentences about the theme and what players do.
+
+## Blog Angle
+
+Choose one clear angle for this post.
+
+- Silver Circle angle: gentle conversation, confidence, social participation, low pressure, easy first table.
+- Corporate / teacher angle: communication practice, facilitation, team discussion, printable aids, workshop use.
+
+Do not mix both equally in the headline. Use one main angle, then add a short section for the other reader.
 
 ## Simple English Rules
 
@@ -109,6 +120,27 @@ Choices:
 
 Is this good for seniors? Explain gently. Avoid medical promises.
 
+## Corporate / Teacher Fit
+
+How could a teacher, facilitator, or company team use this game?
+
+- Communication skill:
+- Table role:
+- Workshop use:
+- Best group size:
+- Debrief question:
+
+## Suggested Blog Layout
+
+1. Opening: who this game helps
+2. Why the game creates useful English
+3. Simple rules
+4. Useful phrases
+5. Live table question
+6. Silver Circle note
+7. Corporate / teacher note
+8. Download / Table Play / Contact CTA
+
 ## FAQ
 
 Q: Is this good for beginners?
@@ -123,12 +155,17 @@ A:
 ## Publishing Checklist
 
 - [ ] Add briefing entry to src/components/Briefings.tsx
-- [ ] Add static crawlable page in public/blog/
+- [ ] Add or update static crawlable page in scripts/build-static-seo-pages.mjs
 - [ ] Link from game card if matching game exists
 - [ ] Add Japanese translations
+- [ ] Decide the primary lane: Silver Circle or Corporate / Teacher
+- [ ] Keep the other lane as a short supporting section
+- [ ] Regenerate static pages: npm run seo:build-pages
 - [ ] Run npm run typecheck
+- [ ] Run npm run lint
 - [ ] Run npm run build
-- [ ] Redeploy D:\\BG-English-Club\\dist to Netlify
+- [ ] Commit and push to GitHub
+- [ ] Confirm Netlify redeploy
 - [ ] Share one short announcement
 `;
 
