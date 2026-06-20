@@ -23,6 +23,7 @@ const primaryNavigation: NavItem[] = [
 ];
 
 const secondaryNavigation: NavItem[] = [
+  { label: { en: 'Impact Demo', ja: 'Impact Demo' }, section: 'impact' },
   { label: { en: 'Table Play', ja: 'Table Play' }, section: 'play' },
   { label: { en: 'Weekly Note', ja: 'Weekly Note' }, section: 'weekly-note' },
   { label: { en: 'Join / Pricing', ja: '参加・料金' }, section: 'offers' },

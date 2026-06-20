@@ -62,6 +62,11 @@ const pageMeta: Record<Section, { title: string; description: string; keywords: 
     description: 'A weekly Board Game English note for Fukuoka corporate teams and Silver Circle sessions, with one English skill, one table activity, and practical applications.',
     keywords: 'Board Game English weekly note, Fukuoka corporate English, Silver Circle English, board game newsletter Japan, English conversation activity',
   },
+  impact: {
+    title: 'Creative Impact Demo | Board Game English Club',
+    description: 'A creative prototype showing how Board Game English Club can combine gaming energy, education clarity, Silver Circle warmth, and corporate communication outcomes.',
+    keywords: 'Board Game English design, gaming education website, Fukuoka English learning, interactive English hero, creative education landing page',
+  },
   'briefing-detail': {
     title: 'English Board Game Briefing Cards | Board Game English Club',
     description: 'Standalone board game briefing cards for English conversation practice, with simple rules, useful phrases, prompts, table missions, and Japanese support.',

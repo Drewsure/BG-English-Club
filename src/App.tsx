@@ -17,6 +17,7 @@ import { Offers } from './components/Offers';
 import { Partnerships } from './components/Partnerships';
 import { TablePlayDevice } from './components/TablePlayDevice';
 import { WeeklyNote } from './components/WeeklyNote';
+import { ImpactHero } from './components/ImpactHero';
 import { PlainAnswer } from './components/PlainAnswer';
 import type { Language } from './lib/i18n';
 
@@ -30,6 +31,7 @@ export type Section =
   | 'partnerships'
   | 'play'
   | 'weekly-note'
+  | 'impact'
   | 'briefing-detail'
   | 'dossier'
   | 'board'
@@ -43,7 +45,7 @@ const sectionFromHash = (): Section => {
   const hash = window.location.hash.replace('#', '');
   const route = hash.split('?')[0] as Section;
   if (route.startsWith('briefings/')) return 'briefing-detail';
-  const valid: Section[] = ['home', 'situation', 'armory', 'games', 'briefings', 'offers', 'partnerships', 'play', 'weekly-note', 'dossier', 'board', 'challenges', 'ranking', 'profile', 'silver-circle', 'admin-images'];
+  const valid: Section[] = ['home', 'situation', 'armory', 'games', 'briefings', 'offers', 'partnerships', 'play', 'weekly-note', 'impact', 'dossier', 'board', 'challenges', 'ranking', 'profile', 'silver-circle', 'admin-images'];
   return valid.includes(route) ? route : 'home';
 };
 
@@ -76,7 +78,7 @@ function AppContent() {
   };
 
   const briefingSlug = window.location.hash.replace('#briefings/', '').split('?')[0];
-  const showPlainAnswer = !['home', 'admin-images'].includes(section);
+  const showPlainAnswer = !['home', 'impact', 'admin-images'].includes(section);
 
   return (
     <div>
@@ -92,6 +94,7 @@ function AppContent() {
       {section === 'partnerships' && <Partnerships language={language} />}
       {section === 'play' && <TablePlayDevice language={language} onNavigate={navigate} />}
       {section === 'weekly-note' && <WeeklyNote language={language} />}
+      {section === 'impact' && <ImpactHero language={language} onNavigate={navigate} />}
       {section === 'briefing-detail' && <BriefingDetail language={language} onNavigate={navigate} slug={briefingSlug} />}
       {section === 'dossier' && <Dossier language={language} />}
       {section === 'ranking' && <Leaderboard onNavigate={navigate} language={language} />}

@@ -43,6 +43,11 @@ const answers: Partial<Record<Section, { en: string; ja: string; action: string 
     ja: 'Weekly Note は、英語スキル、テーブル活動、企業での使い方、Silver Circleでの使い方、スポンサー枠を一枚にまとめます。',
     action: 'Weekly Note',
   },
+  impact: {
+    en: 'Impact Demo is a creative prototype for presenting Board Game English as a vivid, playable table experience.',
+    ja: 'Impact Demo は、Board Game English を「参加したくなるテーブル体験」として見せるための創造的な試作ページです。',
+    action: 'Creative prototype',
+  },
   ranking: {
     en: 'Progress is gentle: record what you actually said, then notice what comes next.',
     ja: '進歩はやさしく記録します。実際に言えた英語を書き、次に試すことを確認します。',
