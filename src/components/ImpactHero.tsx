@@ -19,10 +19,10 @@ import type { Language } from '../lib/i18n';
 import { BrandLogo } from './BrandLogo';
 
 const beats = [
-  { icon: Gamepad2, label: '01', title: 'Choose A Mission', copy: 'The visitor sees a game, a route, and a reason to speak before the lesson is explained.' },
-  { icon: Target, label: '02', title: 'Make One English Move', copy: 'Predict, react, ask, negotiate, or review. One confident action at a time.' },
-  { icon: MessageCircle, label: '03', title: 'Talk Because Play Demands It', copy: 'The board creates the situation. The prompt card gives the words. The table does the rest.' },
-  { icon: Trophy, label: '04', title: 'Take Proof Home', copy: 'A phrase, a moment, a printed note, a next step. Progress becomes visible.' },
+  { icon: Gamepad2, label: '01', title: 'Choose A Game', copy: 'Start with a real board game that gives everyone something to look at, touch, and talk about.' },
+  { icon: Target, label: '02', title: 'Use One English Move', copy: 'Pick one simple focus: predict, react, explain, ask, negotiate, or review.' },
+  { icon: MessageCircle, label: '03', title: 'Speak During Play', copy: 'You do not have to invent conversation. The game creates the moment and the card gives you useful words.' },
+  { icon: Trophy, label: '04', title: 'Leave With Progress', copy: 'Take away one phrase you actually used, one table moment, and one next step for next time.' },
 ];
 
 const entryPaths: Array<{ icon: typeof Briefcase; title: string; audience: string; copy: string; action: string; section: Section; tone: string }> = [
@@ -72,33 +72,33 @@ const tableCards = [
 ];
 
 const magneticMoments = [
-  ['The Hook', 'A glowing route across the board says: this is not a class, it is a table adventure.'],
-  ['The Choice', 'Four clear paths let visitors identify themselves immediately: team, senior, teacher, player.'],
-  ['The Tension', 'Cards ask real questions during play. English appears because the game needs it.'],
-  ['The Reward', 'Printed notes and progress records make the experience feel useful after the session ends.'],
-  ['The Range', 'Silver Circle and corporate users share one system, showing unusual range and originality.'],
-  ['The Next Click', 'Every section invites one action: enter, book, print, or continue.'],
+  ['You Relax Faster', 'The table gives your hands and eyes something to do, so speaking English feels less exposed.'],
+  ['You Have A Reason To Speak', 'Each turn creates a small decision, question, surprise, or explanation.'],
+  ['You Use Real Phrases', 'The English comes from the game situation, not from memorising a script.'],
+  ['You Notice Progress', 'After play, one useful phrase becomes something you can remember and use again.'],
+  ['You Belong At The Table', 'Silver Circle, corporate teams, families, teachers, and beginners can all enter at the right level.'],
+  ['You Know What To Do Next', 'Try a table, print a briefing, book a workshop, or continue into regular sessions.'],
 ];
 
-const designPrinciples = [
-  ['Gaming Impact', 'A bold first screen, route-map energy, visible goals, motion, and reward cues.'],
-  ['Education Trust', 'Plain promise, readable steps, low pressure, Japanese support, and clear outcomes.'],
-  ['Human Warmth', 'Silver Circle and corporate users appear in the same living table, not as separate brochures.'],
-  ['Technical Depth', 'The briefing system, Table Play Tool, PDFs, and progress records become the story, not hidden machinery.'],
+const whyItWorks = [
+  ['A Game Gives Structure', 'You always know whose turn it is, what choice matters, and why the next sentence is useful.'],
+  ['English Has A Purpose', 'You speak to place a piece, explain a choice, ask for help, or react to what happened.'],
+  ['Support Is Built In', 'Briefing cards, live questions, Japanese support, and printable notes keep the table calm.'],
+  ['Progress Feels Human', 'The goal is not perfect grammar. The goal is to say something useful and notice it afterwards.'],
 ];
 
-const requirements = [
-  ['Visual System', 'Hero-grade art direction, custom assets, richer section layouts, and fewer plain card grids.'],
-  ['Motion Rules', 'Purposeful animation, hover states, step reveals, and reduced-motion support for accessibility.'],
-  ['Content Design', 'One promise per screen, fewer labels, more emotional copy, and clear user journeys.'],
-  ['Program Management', 'Design sprint, asset pipeline, component backlog, weekly review, and launch QA checklist.'],
+const bookableWays = [
+  ['Trial Table', 'Try one friendly session before choosing a program.'],
+  ['Silver Circle', 'Gentle English board games for older learners and community connection.'],
+  ['Corporate Workshop', 'A lively communication session for teams, meetings, and soft skills.'],
+  ['Briefing Cards', 'Printable game guides for teachers, parents, and game groups.'],
 ];
 
-const buildRoadmap = [
-  ['Sprint 1', 'Hero Identity', 'Create three hero-grade scenes: table adventure, Silver Circle warmth, corporate challenge.'],
-  ['Sprint 2', 'Interactive Flow', 'Turn the five-step process into animated cards, progress route, and Table Play entry.'],
-  ['Sprint 3', 'Audience Pages', 'Rebuild Silver Circle, Corporate, and Briefings with distinct visual lanes.'],
-  ['Sprint 4', 'Launch Polish', 'Compress assets, test mobile, tune copy, add analytics goals, and prepare Netlify release.'],
+const sessionPath = [
+  ['Arrive', 'Meet the table, choose a suitable game, and warm up with one easy phrase.'],
+  ['Play', 'Use a live question or phrase card while the game gives you natural reasons to speak.'],
+  ['Notice', 'Pause after play and collect the English that actually appeared.'],
+  ['Continue', 'Take a printed note, join a regular table, or book the next session for your group.'],
 ];
 
 export function ImpactHero({ language, onNavigate }: { language: Language; onNavigate: (section: Section) => void }) {
@@ -149,7 +149,7 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-md">
               <BrandLogo compact />
-              <span className="text-[10px] font-black uppercase tracking-[0.22em] text-[#ffe17a]">Creative Hero Experiment</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.22em] text-[#ffe17a]">Board Game English Club Fukuoka</span>
             </div>
 
             <h1 className="mt-8 max-w-4xl font-display text-6xl leading-[0.86] tracking-wide md:text-8xl lg:text-9xl">
@@ -225,9 +225,7 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
             <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#ffcf3f]">Choose Your Door</p>
             <h2 className="mt-3 font-display text-5xl leading-[0.95] md:text-7xl">Every visitor needs a way in.</h2>
           </div>
-          <p className="max-w-xl text-sm leading-7 text-white/68">
-            Gaming sites create choice. Education sites create confidence. This page should do both in the first minute.
-          </p>
+          <p className="max-w-xl text-sm leading-7 text-white/68">Choose the doorway that fits you today. Each path leads to the same promise: useful English, real play, and a table that helps you speak.</p>
         </div>
 
         <div className="grid gap-4 lg:grid-cols-4">
@@ -254,12 +252,12 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
 
       <section className="container-shell grid gap-8 py-12 lg:grid-cols-[0.95fr_1.05fr]">
         <div>
-          <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#ffcf3f]">Magnetic Language</p>
+          <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#ffcf3f]">Why It Feels Different</p>
           <h2 className="mt-4 font-display text-5xl leading-[0.95] md:text-7xl">
-            Do not explain the machine first. Let people feel the table.
+            You are not practising English in the air. You are using it at the table.
           </h2>
           <p className="mt-6 max-w-2xl text-base leading-8 text-white/70">
-            The technical system is valuable, but it should arrive as a promise: a game gives you a situation, a card gives you words, and the table gives you confidence.
+            A board game gives the room a shared focus. You can point, choose, laugh, think, and try again. The English grows from what is happening in front of you.
           </p>
         </div>
 
@@ -277,11 +275,11 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
         <div className="rounded-[2rem] border border-white/12 bg-white/[0.07] p-6 shadow-2xl shadow-black/15">
           <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div>
-              <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#65f4e7]">Magnetic Moments</p>
-              <h2 className="mt-3 font-display text-5xl leading-none">What should the page make people feel?</h2>
+              <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#65f4e7]">What You Will Notice</p>
+              <h2 className="mt-3 font-display text-5xl leading-none">The room changes when English has a job.</h2>
             </div>
             <div className="rounded-full border border-[#ffcf3f]/35 bg-[#ffcf3f]/12 px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-[#ffcf3f]">
-              Agency + Clarity + Reward
+              Calm + Choice + Progress
             </div>
           </div>
 
@@ -289,7 +287,7 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
             {magneticMoments.map(([title, copy], index) => (
               <article key={title} className="rounded-2xl border border-white/12 bg-[#081f2f]/60 p-5">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-black uppercase tracking-[0.18em] text-white/38">Moment {index + 1}</span>
+                  <span className="text-[10px] font-black uppercase tracking-[0.18em] text-white/38">Table moment {index + 1}</span>
                   {index % 3 === 0 ? <Flame size={18} className="text-[#ffcf3f]" /> : index % 3 === 1 ? <Compass size={18} className="text-[#65f4e7]" /> : <Zap size={18} className="text-[#ff6fa1]" />}
                 </div>
                 <h3 className="mt-4 font-display text-3xl leading-none">{title}</h3>
@@ -302,9 +300,9 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
 
       <section className="container-shell grid gap-5 py-12 lg:grid-cols-2">
         <div className="rounded-[2rem] border border-white/12 bg-[#fffaf0] p-7 text-[#17212b]">
-          <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#d87522]">Design Blend</p>
+          <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#d87522]">Why It Works</p>
           <div className="mt-6 grid gap-4">
-            {designPrinciples.map(([title, copy]) => (
+            {whyItWorks.map(([title, copy]) => (
               <div key={title} className="rounded-2xl border border-[#efd39d] bg-white p-5">
                 <h3 className="font-display text-2xl tracking-wide">{title}</h3>
                 <p className="mt-2 text-sm leading-6 text-[#62584f]">{copy}</p>
@@ -314,9 +312,9 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
         </div>
 
         <div className="rounded-[2rem] border border-white/12 bg-white/[0.07] p-7">
-          <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#65f4e7]">Build Requirements</p>
+          <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#65f4e7]">Ways To Join</p>
           <div className="mt-6 grid gap-4">
-            {requirements.map(([title, copy], index) => (
+            {bookableWays.map(([title, copy], index) => (
               <div key={title} className="flex gap-4 rounded-2xl border border-white/12 bg-black/16 p-5">
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#ffcf3f] text-sm font-black text-[#17212b]">{index + 1}</span>
                 <span>
@@ -333,16 +331,16 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
         <div className="rounded-[2rem] border border-[#ffcf3f]/25 bg-[#fffaf0] p-7 text-[#17212b] shadow-2xl shadow-[#ffcf3f]/10">
           <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr]">
             <div>
-              <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#d87522]">Program Management</p>
-              <h2 className="mt-3 font-display text-5xl leading-none">How we make this real without losing control.</h2>
+              <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#d87522]">Your Session Path</p>
+              <h2 className="mt-3 font-display text-5xl leading-none">From first hello to useful English you remember.</h2>
               <p className="mt-5 text-sm leading-7 text-[#62584f]">
-                The creative page needs a production rhythm: decide the audience, create the asset, build the component, test the phone view, then measure the action.
+                A session is designed to feel friendly, clear, and active. You do not need to be good at games or confident in English before you begin.
               </p>
             </div>
             <div className="grid gap-3 md:grid-cols-2">
-              {buildRoadmap.map(([sprint, title, copy]) => (
-                <article key={sprint} className="rounded-2xl border border-[#efd39d] bg-white p-5">
-                  <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#d87522]">{sprint}</p>
+              {sessionPath.map(([step, title, copy]) => (
+                <article key={step} className="rounded-2xl border border-[#efd39d] bg-white p-5">
+                  <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#d87522]">{step}</p>
                   <h3 className="mt-2 font-display text-3xl leading-none">{title}</h3>
                   <p className="mt-3 text-sm leading-6 text-[#62584f]">{copy}</p>
                 </article>
