@@ -145,39 +145,39 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,21,32,.97)_0%,rgba(5,21,32,.84)_34%,rgba(5,21,32,.34)_64%,rgba(5,21,32,.08)_100%)]" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#081f2f] to-transparent" />
 
-        <div className="container-shell relative z-10 grid min-h-[calc(100vh-66px)] items-center gap-10 py-14 lg:grid-cols-[0.92fr_1.08fr]">
-          <div className="max-w-3xl">
+        <div className="container-shell relative z-10 grid min-h-[calc(100vh-66px)] items-center gap-8 py-10 lg:grid-cols-[0.88fr_1.12fr] lg:py-12">
+          <div className="max-w-2xl">
             <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-md">
               <BrandLogo compact />
               <span className="text-[10px] font-black uppercase tracking-[0.22em] text-[#ffe17a]">Board Game English Club Fukuoka</span>
             </div>
 
-            <h1 className="mt-8 max-w-4xl font-display text-6xl leading-[0.86] tracking-wide md:text-8xl lg:text-9xl">
+            <h1 className="mt-5 max-w-3xl font-display text-[clamp(3rem,6.2vw,5.8rem)] leading-[0.9] tracking-wide">
               English Becomes A Game
-              <span className="mt-3 block text-[#65f4e7]">You Can Enter.</span>
+              <span className="mt-2 block text-[#65f4e7]">You Can Enter.</span>
             </h1>
 
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-white/82 md:text-xl">
+            <p className="mt-5 max-w-xl text-base leading-7 text-white/82 md:text-lg md:leading-8">
               {isJa
                 ? '説明を読む前に、参加したくなる。ゲームの高揚感、英語の安心感、地域のつながりを一つのテーブル体験にします。'
-                : 'Before visitors read the explanation, they should feel the invitation: choose a game, make a move, say something useful, and leave with proof.'}
+                : 'Choose a game, make a move, say something useful, and leave with English you can remember.'}
             </p>
 
-            <div className="mt-6 grid max-w-2xl gap-2 sm:grid-cols-4">
+            <div className="mt-6 flex flex-wrap gap-3">
+              <button onClick={() => onNavigate('play')} className="inline-flex items-center gap-2 rounded-full bg-[#ffcf3f] px-5 py-3.5 text-sm font-black uppercase tracking-[0.12em] text-[#17212b] shadow-xl shadow-[#ffcf3f]/25 transition hover:-translate-y-1 hover:bg-[#ffe36f]">
+                {isJa ? '体験を始める' : 'Enter The Table'} <ArrowRight size={17} />
+              </button>
+              <button onClick={() => onNavigate('briefings')} className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-5 py-3.5 text-sm font-black uppercase tracking-[0.12em] text-white backdrop-blur-md transition hover:-translate-y-1 hover:bg-white/18">
+                {isJa ? 'ブリーフィングを見る' : 'See Briefings'} <Sparkles size={17} />
+              </button>
+            </div>
+
+            <div className="mt-4 grid max-w-xl gap-2 sm:grid-cols-4">
               {['Choose', 'Speak', 'Laugh', 'Leave With English'].map((word) => (
-                <span key={word} className="rounded-full border border-white/18 bg-white/10 px-4 py-2 text-center text-[11px] font-black uppercase tracking-[0.16em] text-white/82 backdrop-blur-md">
+                <span key={word} className="rounded-full border border-white/18 bg-white/10 px-3 py-2 text-center text-[10px] font-black uppercase tracking-[0.12em] text-white/82 backdrop-blur-md">
                   {word}
                 </span>
               ))}
-            </div>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              <button onClick={() => onNavigate('play')} className="inline-flex items-center gap-2 rounded-full bg-[#ffcf3f] px-6 py-4 text-sm font-black uppercase tracking-[0.12em] text-[#17212b] shadow-xl shadow-[#ffcf3f]/25 transition hover:-translate-y-1 hover:bg-[#ffe36f]">
-                {isJa ? '体験を始める' : 'Enter The Table'} <ArrowRight size={17} />
-              </button>
-              <button onClick={() => onNavigate('briefings')} className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-6 py-4 text-sm font-black uppercase tracking-[0.12em] text-white backdrop-blur-md transition hover:-translate-y-1 hover:bg-white/18">
-                {isJa ? 'ブリーフィングを見る' : 'See Briefings'} <Sparkles size={17} />
-              </button>
             </div>
           </div>
 
