@@ -264,22 +264,35 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
         </div>
       </section>
 
-      <section className="container-shell py-12">
-        <div className="grid gap-4 md:grid-cols-4">
+      <section className="container-shell py-8">
+        <div className="relative overflow-hidden rounded-[2rem] border border-white/12 bg-white/[0.06] p-4 shadow-2xl shadow-black/15">
+          <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(255,207,63,.10),transparent_36%,rgba(101,244,231,.10)_76%,transparent)]" />
+          <div className="relative mb-5 flex flex-col justify-between gap-3 md:flex-row md:items-end">
+            <div>
+              <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#65f4e7]">How You Start</p>
+              <h2 className="mt-2 font-display text-4xl leading-none md:text-5xl">A simple route into English.</h2>
+            </div>
+            <p className="max-w-md text-sm leading-6 text-white/64">The game carries the session, so visitors always know what to do next.</p>
+          </div>
+
+          <div className="relative grid gap-3 md:grid-cols-4">
+            <span className="absolute left-8 right-8 top-9 hidden h-1 rounded-full bg-white/10 md:block" />
           {beats.map(({ icon: Icon, label, title, copy }) => (
-            <article key={title} className="group rounded-[1.6rem] border border-white/12 bg-white/[0.06] p-5 shadow-xl shadow-black/10 transition hover:-translate-y-1 hover:bg-white/[0.1]">
+            <article key={title} className="group relative overflow-hidden rounded-[1.4rem] border border-white/12 bg-[#081f2f]/64 p-4 shadow-xl shadow-black/10 transition hover:-translate-y-1 hover:bg-white/[0.1]">
+              <span className="absolute right-[-20px] top-[-20px] h-20 w-20 rounded-full border border-white/10" />
               <div className="flex items-center justify-between">
-                <span className="text-[11px] font-black uppercase tracking-[0.2em] text-[#ffcf3f]">{label}</span>
-                <Icon className="text-[#65f4e7]" size={24} />
+                <span className="grid h-11 w-11 place-items-center rounded-full bg-[#ffcf3f] text-xs font-black text-[#17212b] shadow-lg shadow-[#ffcf3f]/20">{label}</span>
+                <Icon className="text-[#65f4e7]" size={22} />
               </div>
-              <h2 className="mt-5 font-display text-3xl leading-none">{title}</h2>
-              <p className="mt-4 text-sm leading-6 text-white/68">{copy}</p>
+              <h3 className="mt-4 font-display text-3xl leading-none">{title}</h3>
+              <p className="mt-3 text-sm leading-6 text-white/66">{copy}</p>
             </article>
           ))}
+          </div>
         </div>
       </section>
 
-      <section className="container-shell py-12">
+      <section className="container-shell py-8">
         <div className="mb-7 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
             <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#ffcf3f]">Choose Your Door</p>
@@ -320,7 +333,7 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
         </div>
       </section>
 
-      <section className="container-shell grid gap-8 py-12 lg:grid-cols-[0.95fr_1.05fr]">
+      <section className="container-shell grid gap-8 py-10 lg:grid-cols-[0.95fr_1.05fr]">
         <div>
           <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#ffcf3f]">Why It Feels Different</p>
           <h2 className="mt-4 font-display text-5xl leading-[0.95] md:text-7xl">
@@ -341,7 +354,7 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
         </div>
       </section>
 
-      <section className="container-shell py-12">
+      <section className="container-shell py-10">
         <div className="rounded-[2rem] border border-white/12 bg-white/[0.07] p-6 shadow-2xl shadow-black/15">
           <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div>
@@ -368,7 +381,7 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
         </div>
       </section>
 
-      <section className="container-shell grid gap-5 py-12 lg:grid-cols-2">
+      <section className="container-shell grid gap-5 py-7 lg:grid-cols-2">
         <div className="rounded-[2rem] border border-white/12 bg-[#fffaf0] p-7 text-[#17212b]">
           <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#d87522]">Why It Works</p>
           <div className="mt-6 grid gap-4">
@@ -397,7 +410,7 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
         </div>
       </section>
 
-      <section className="container-shell py-12">
+      <section className="container-shell py-7">
         <div className="rounded-[2rem] border border-[#ffcf3f]/25 bg-[#fffaf0] p-7 text-[#17212b] shadow-2xl shadow-[#ffcf3f]/10">
           <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr]">
             <div>
