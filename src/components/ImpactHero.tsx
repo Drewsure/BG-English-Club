@@ -7,7 +7,6 @@ import {
   Heart,
   Languages,
   MessageCircle,
-  MousePointer2,
   Printer,
   Sparkles,
   Target,
@@ -25,7 +24,7 @@ const beats = [
   { icon: Trophy, label: '04', title: 'Leave With Progress', copy: 'Take away one phrase you actually used, one table moment, and one next step for next time.' },
 ];
 
-const entryPaths: Array<{ icon: typeof Briefcase; title: string; audience: string; copy: string; action: string; section: Section; tone: string }> = [
+const entryPaths: Array<{ icon: typeof Briefcase; title: string; audience: string; copy: string; action: string; section: Section; tone: string; mascot: string; tag: string }> = [
   {
     icon: Briefcase,
     title: 'For Teams',
@@ -34,6 +33,8 @@ const entryPaths: Array<{ icon: typeof Briefcase; title: string; audience: strin
     action: 'Build a workshop',
     section: 'partnerships',
     tone: 'from-[#ffcf3f] to-[#ff8d3f]',
+    mascot: '/images/impact/meeples/corporate-teams.png',
+    tag: 'Strategy',
   },
   {
     icon: Heart,
@@ -43,6 +44,19 @@ const entryPaths: Array<{ icon: typeof Briefcase; title: string; audience: strin
     action: 'See Silver Circle',
     section: 'silver-circle',
     tone: 'from-[#ff6fa1] to-[#ffd1df]',
+    mascot: '/images/impact/meeples/silver-circle.png',
+    tag: 'Community',
+  },
+  {
+    icon: Gamepad2,
+    title: 'For Families',
+    audience: 'Family game tables',
+    copy: 'Parents and children share useful English through playful choices, turns, and table moments.',
+    action: 'Explore options',
+    section: 'offers',
+    tone: 'from-[#ffcf3f] to-[#65f4e7]',
+    mascot: '/images/impact/meeples/families.png',
+    tag: 'Play Together',
   },
   {
     icon: Printer,
@@ -52,15 +66,8 @@ const entryPaths: Array<{ icon: typeof Briefcase; title: string; audience: strin
     action: 'Open briefings',
     section: 'briefings',
     tone: 'from-[#65f4e7] to-[#8fb7ff]',
-  },
-  {
-    icon: MousePointer2,
-    title: 'For Players',
-    audience: 'Table Play Tool',
-    copy: 'Pick a game, match a briefing, choose a prompt, and play in English now.',
-    action: 'Try the tool',
-    section: 'play',
-    tone: 'from-[#b8ff72] to-[#65f4e7]',
+    mascot: '/images/impact/meeples/teachers.png',
+    tag: 'Table Host',
   },
 ];
 
@@ -247,16 +254,26 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
         </div>
 
         <div className="grid gap-4 lg:grid-cols-4">
-          {entryPaths.map(({ icon: Icon, title, audience, copy, action, section, tone }) => (
+          {entryPaths.map(({ icon: Icon, title, audience, copy, action, section, tone, mascot, tag }) => (
             <button
               key={title}
               onClick={() => onNavigate(section)}
-              className="group relative overflow-hidden rounded-[1.7rem] border border-white/14 bg-white/[0.07] p-5 text-left shadow-2xl shadow-black/10 transition hover:-translate-y-1 hover:border-white/35"
+              className="group relative overflow-hidden rounded-[1.7rem] border border-white/14 bg-white/[0.07] p-4 text-left shadow-2xl shadow-black/10 transition hover:-translate-y-1 hover:border-white/35"
             >
               <span className={`glow-sweep absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${tone}`} />
-              <span className={`inline-grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br ${tone} text-[#081f2f] shadow-lg`}>
-                <Icon size={24} />
-              </span>
+              <div className={`relative h-44 overflow-hidden rounded-[1.35rem] border border-white/12 bg-gradient-to-br ${tone} shadow-xl shadow-black/20`}>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_18%,rgba(255,255,255,.65),transparent_28%),linear-gradient(145deg,rgba(8,31,47,.05),rgba(8,31,47,.72))]" />
+                <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/35 bg-[#081f2f]/36 px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.18em] text-white backdrop-blur-md">
+                  <Icon size={14} /> {tag}
+                </div>
+                <span className="absolute bottom-5 left-5 h-2 w-24 rounded-full bg-white/30" />
+                <span className="token-step absolute bottom-8 left-8 h-5 w-5 rounded-full bg-[#fffaf0] shadow-lg shadow-white/35" />
+                <img
+                  src={mascot}
+                  alt=""
+                  className="absolute bottom-[-30px] right-[-26px] h-60 w-60 object-contain drop-shadow-[0_24px_28px_rgba(0,0,0,.38)] transition duration-500 group-hover:-translate-y-3 group-hover:rotate-2 group-hover:scale-110"
+                />
+              </div>
               <p className="mt-5 text-[10px] font-black uppercase tracking-[0.2em] text-[#65f4e7]">{audience}</p>
               <h3 className="mt-2 font-display text-4xl leading-none">{title}</h3>
               <p className="mt-4 min-h-[72px] text-sm leading-6 text-white/68">{copy}</p>
