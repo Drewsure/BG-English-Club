@@ -186,7 +186,7 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
               </button>
             </div>
 
-            <div className="mt-4 grid max-w-xl gap-2 sm:grid-cols-4">
+            <div className="mt-4 grid max-w-xl gap-2 pb-6 sm:grid-cols-4 md:pb-0">
               {['Learn English', 'Stay Sharp', 'Meet People', 'Play Games'].map((word) => (
                 <span key={word} className="rounded-full border border-white/18 bg-white/10 px-3 py-2 text-center text-[10px] font-black uppercase tracking-[0.12em] text-white/82 backdrop-blur-md">
                   {word}
@@ -218,7 +218,7 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
         </div>
       </section>
 
-      <section className="container-shell -mt-12 pb-8">
+      <section className="container-shell -mt-4 pb-8 md:-mt-6">
         <div className="relative z-20 overflow-hidden rounded-[2rem] border border-white/16 bg-[#081f2f]/90 p-3 shadow-2xl shadow-black/25 backdrop-blur-xl">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(255,207,63,.20),transparent_28%),radial-gradient(circle_at_84%_22%,rgba(101,244,231,.18),transparent_30%),linear-gradient(135deg,rgba(255,255,255,.08),transparent_42%)]" />
           <div className="relative grid gap-3 lg:grid-cols-[1.35fr_1fr]">
