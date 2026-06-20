@@ -71,6 +71,13 @@ const tableCards = [
   ['Record', 'Next time I want to try...'],
 ];
 
+const promiseTiles = [
+  ['Learn English', 'Useful phrases appear while you choose, explain, ask, and react.'],
+  ['Engage Your Mind', 'Games give memory, planning, attention, and decision-making a friendly workout.'],
+  ['Build Community', 'A shared table makes conversation easier, warmer, and more natural.'],
+  ['Use Board Games', 'The game is not decoration. It is the engine that creates the English moment.'],
+];
+
 const magneticMoments = [
   ['You Relax Faster', 'The table gives your hands and eyes something to do, so speaking English feels less exposed.'],
   ['You Have A Reason To Speak', 'Each turn creates a small decision, question, surprise, or explanation.'],
@@ -153,14 +160,14 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
             </div>
 
             <h1 className="mt-5 max-w-3xl font-display text-[clamp(3rem,6.2vw,5.8rem)] leading-[0.9] tracking-wide">
-              English Becomes A Game
-              <span className="mt-2 block text-[#65f4e7]">You Can Enter.</span>
+              Learn English.
+              <span className="mt-2 block text-[#65f4e7]">Play With Purpose.</span>
             </h1>
 
             <p className="mt-5 max-w-xl text-base leading-7 text-white/82 md:text-lg md:leading-8">
               {isJa
-                ? '説明を読む前に、参加したくなる。ゲームの高揚感、英語の安心感、地域のつながりを一つのテーブル体験にします。'
-                : 'Choose a game, make a move, say something useful, and leave with English you can remember.'}
+                ? 'ボードゲームを使って、英語を学び、考える力を使い、人とつながる場所です。ゲームが会話の理由を作り、英語が自然に出てきます。'
+                : 'A Board Game English table for people who want to learn English, keep their mind active, and connect with others through real games.'}
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
@@ -173,7 +180,7 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
             </div>
 
             <div className="mt-4 grid max-w-xl gap-2 sm:grid-cols-4">
-              {['Choose', 'Speak', 'Laugh', 'Leave With English'].map((word) => (
+              {['Learn English', 'Think Actively', 'Play Together', 'Join A Table'].map((word) => (
                 <span key={word} className="rounded-full border border-white/18 bg-white/10 px-3 py-2 text-center text-[10px] font-black uppercase tracking-[0.12em] text-white/82 backdrop-blur-md">
                   {word}
                 </span>
@@ -201,6 +208,17 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
               <p className="mt-5 text-[10px] font-black uppercase tracking-[0.22em] text-white/55">Progress Route</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="container-shell -mt-10 pb-10">
+        <div className="relative z-20 grid gap-3 rounded-[2rem] border border-white/16 bg-[#081f2f]/86 p-4 shadow-2xl shadow-black/25 backdrop-blur-xl md:grid-cols-4">
+          {promiseTiles.map(([title, copy]) => (
+            <article key={title} className="rounded-[1.35rem] border border-white/12 bg-white/[0.07] p-4">
+              <p className="font-display text-2xl leading-none tracking-wide text-white">{title}</p>
+              <p className="mt-3 text-xs leading-5 text-white/64">{copy}</p>
+            </article>
+          ))}
         </div>
       </section>
 
