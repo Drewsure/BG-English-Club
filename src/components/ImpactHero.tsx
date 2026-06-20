@@ -78,33 +78,6 @@ const promiseTiles = [
   ['Use Board Games', 'The game is not decoration. It is the engine that creates the English moment.'],
 ];
 
-const instantStatements = [
-  {
-    title: 'Learn English',
-    copy: 'Useful words appear while you choose, explain, ask, and react.',
-    className: 'border-[#ffcf3f]/60 bg-[#fff6d8] text-[#17212b] shadow-[#ffcf3f]/20 [--tilt:-3deg]',
-    label: 'English',
-  },
-  {
-    title: 'Keep Your Mind Active',
-    copy: 'Think, remember, decide, predict, and respond while the game moves.',
-    className: 'border-[#65f4e7]/55 bg-[#e8fffb] text-[#17212b] shadow-[#65f4e7]/20 [--tilt:2deg]',
-    label: 'Active Thinking',
-  },
-  {
-    title: 'Build Community',
-    copy: 'Speak with people around a shared table, not a worksheet.',
-    className: 'border-[#ff7aa8]/55 bg-[#fff0f6] text-[#17212b] shadow-[#ff7aa8]/20 [--tilt:2deg]',
-    label: 'Connection',
-  },
-  {
-    title: 'Board Games Are The Engine',
-    copy: 'The game creates the reason to talk, laugh, notice, and try again.',
-    className: 'border-[#b8ff72]/55 bg-[#f5ffe9] text-[#17212b] shadow-[#b8ff72]/20 [--tilt:-2deg]',
-    label: 'The Method',
-  },
-];
-
 const magneticMoments = [
   ['You Relax Faster', 'The table gives your hands and eyes something to do, so speaking English feels less exposed.'],
   ['You Have A Reason To Speak', 'Each turn creates a small decision, question, surprise, or explanation.'],
@@ -177,17 +150,16 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
       <section className="relative min-h-[calc(100vh-66px)] pt-[66px]">
         <img src="/images/impact/bge-impact-hero.png" alt="" className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,21,32,.97)_0%,rgba(5,21,32,.84)_34%,rgba(5,21,32,.34)_64%,rgba(5,21,32,.08)_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_30%,rgba(5,21,32,.92)_0%,rgba(5,21,32,.82)_21%,rgba(5,21,32,.18)_44%,rgba(5,21,32,0)_67%)]" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#081f2f] to-transparent" />
 
-        <div className="container-shell relative z-10 grid min-h-[calc(100vh-66px)] items-center gap-8 py-10 lg:grid-cols-[0.88fr_1.12fr] lg:py-12">
+        <div className="container-shell relative z-10 grid min-h-[calc(100vh-66px)] items-center gap-8 py-10 md:grid-cols-[0.88fr_1.12fr] lg:py-12">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-md">
               <BrandLogo compact />
               <span className="text-[10px] font-black uppercase tracking-[0.22em] text-[#ffe17a]">Board Game English Club Fukuoka</span>
             </div>
 
-            <h1 className="mt-5 max-w-3xl font-display text-5xl leading-[0.92] tracking-wide md:text-7xl xl:text-8xl">
+            <h1 className="mt-5 max-w-3xl font-display text-5xl leading-[0.92] tracking-wide md:text-6xl xl:text-8xl">
               Learn English Through Board Games
               <span className="mt-3 block text-[#65f4e7]">Think. Speak. Connect.</span>
             </h1>
@@ -216,20 +188,24 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
             </div>
           </div>
 
-          <div className="relative hidden min-h-[560px] lg:block">
-            <div className="absolute right-[-4%] top-[2%] h-[520px] w-[600px] rounded-[3rem] bg-[#061826]/70 blur-3xl" />
-            <div className="absolute right-0 top-[10%] grid w-[min(100%,690px)] grid-cols-2 gap-4">
-              {instantStatements.map(({ title, copy, className, label }, index) => (
-                <article
-                  key={title}
-                  className={`impact-float min-h-[178px] rounded-[1.7rem] border p-5 shadow-2xl ${className}`}
-                  style={{ animationDelay: `${index * 0.35}s` }}
-                >
-                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#d86521]">{label}</p>
-                  <h2 className="mt-3 font-display text-4xl leading-[0.92] tracking-wide">{title}</h2>
-                  <p className="mt-3 text-sm font-bold leading-6 opacity-80">{copy}</p>
-                </article>
-              ))}
+          <div className="relative hidden min-h-[520px] md:block xl:min-h-[560px]">
+            <div className="impact-float absolute right-[8%] top-[6%] w-72 rounded-[1.8rem] border border-white/20 bg-white/14 p-5 shadow-2xl shadow-cyan-500/20 backdrop-blur-xl [--tilt:4deg]">
+              <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#65f4e7]">Board Game English</p>
+              <p className="mt-3 font-display text-3xl leading-none">Learn English through real games.</p>
+              <div className="route-pulse mt-5 h-1 rounded-full bg-[#65f4e7]" />
+            </div>
+
+            <div className="impact-float absolute bottom-[20%] left-[4%] w-80 rounded-[1.8rem] border border-white/20 bg-[#fffaf0] p-5 text-[#17212b] shadow-2xl shadow-pink-500/25 [--tilt:-5deg]" style={{ animationDelay: '0.8s' }}>
+              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#ef3d66]">Silver Circle + Corporate</p>
+              <p className="mt-3 text-sm font-bold leading-6">Think, speak, connect, and build confidence around one shared table.</p>
+            </div>
+
+            <div className="absolute bottom-[1%] right-[2%] rounded-[2rem] border border-white/15 bg-[#081f2f]/72 p-5 shadow-2xl backdrop-blur-xl">
+              <div className="flex items-center gap-3">
+                <span className="h-5 w-5 rounded-full bg-[#ffcf3f] token-step shadow-lg shadow-[#ffcf3f]/40" />
+                <span className="h-1 w-32 rounded-full bg-white/20" />
+              </div>
+              <p className="mt-4 text-[10px] font-black uppercase tracking-[0.22em] text-white/55">Play. Speak. Remember.</p>
             </div>
           </div>
         </div>
