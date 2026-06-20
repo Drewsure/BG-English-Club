@@ -218,14 +218,49 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
         </div>
       </section>
 
-      <section className="container-shell -mt-10 pb-10">
-        <div className="relative z-20 grid gap-3 rounded-[2rem] border border-white/16 bg-[#081f2f]/86 p-4 shadow-2xl shadow-black/25 backdrop-blur-xl md:grid-cols-4">
-          {promiseTiles.map(([title, copy]) => (
-            <article key={title} className="rounded-[1.35rem] border border-white/12 bg-white/[0.07] p-4">
-              <p className="font-display text-2xl leading-none tracking-wide text-white">{title}</p>
-              <p className="mt-3 text-xs leading-5 text-white/64">{copy}</p>
+      <section className="container-shell -mt-12 pb-8">
+        <div className="relative z-20 overflow-hidden rounded-[2rem] border border-white/16 bg-[#081f2f]/90 p-3 shadow-2xl shadow-black/25 backdrop-blur-xl">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(255,207,63,.20),transparent_28%),radial-gradient(circle_at_84%_22%,rgba(101,244,231,.18),transparent_30%),linear-gradient(135deg,rgba(255,255,255,.08),transparent_42%)]" />
+          <div className="relative grid gap-3 lg:grid-cols-[1.35fr_1fr]">
+            <article className="group relative min-h-[190px] overflow-hidden rounded-[1.55rem] border border-[#ffcf3f]/30 bg-gradient-to-br from-[#fff0b8] via-[#ffcf3f] to-[#ff8d3f] p-5 text-[#17212b] shadow-xl shadow-[#ffcf3f]/15">
+              <div className="absolute right-[-28px] top-[-28px] h-32 w-32 rounded-full border border-white/35 bg-white/18" />
+              <div className="absolute bottom-5 right-6 flex items-center gap-2">
+                <span className="h-3 w-3 rounded-full bg-[#081f2f]/75 shadow-lg" />
+                <span className="h-1.5 w-24 rounded-full bg-[#081f2f]/20" />
+                <span className="h-5 w-5 rounded-full bg-[#65f4e7] shadow-lg shadow-[#65f4e7]/40 transition group-hover:translate-x-5" />
+              </div>
+              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#7d4418]">First promise</p>
+              <h2 className="mt-4 max-w-sm font-display text-5xl leading-none tracking-wide">Learn English</h2>
+              <p className="mt-4 max-w-md text-sm font-bold leading-7 text-[#3c2b1e]/78">
+                Useful phrases appear while you choose, explain, ask, and react.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {['Choose', 'Explain', 'Ask', 'React'].map((word) => (
+                  <span key={word} className="rounded-full border border-[#17212b]/15 bg-white/38 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.16em]">
+                    {word}
+                  </span>
+                ))}
+              </div>
             </article>
-          ))}
+
+            <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+              {promiseTiles.slice(1).map(([title, copy], index) => {
+                const tones = [
+                  'from-[#65f4e7]/18 to-[#8fb7ff]/12 border-[#65f4e7]/22 text-[#65f4e7]',
+                  'from-[#ff6fa1]/18 to-[#ffd1df]/12 border-[#ff6fa1]/22 text-[#ff9bbc]',
+                  'from-[#b8ff72]/18 to-[#65f4e7]/12 border-[#b8ff72]/22 text-[#b8ff72]',
+                ];
+                return (
+                  <article key={title} className={`relative min-h-[112px] overflow-hidden rounded-[1.35rem] border bg-gradient-to-br p-4 ${tones[index]}`}>
+                    <span className="absolute right-4 top-4 h-12 w-12 rounded-full border border-current/25 opacity-60" />
+                    <span className="absolute bottom-4 left-4 h-1.5 w-16 rounded-full bg-current/35" />
+                    <p className="font-display text-2xl leading-none tracking-wide text-white">{title}</p>
+                    <p className="mt-3 max-w-md text-xs font-semibold leading-5 text-white/66">{copy}</p>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
 
