@@ -84,7 +84,13 @@ const pages = [
           <a href="/corporate-workshops-fukuoka/">Open corporate workshops</a>
         </article>
       </div>
-      <h2>Latest briefing</h2>
+      <h2>Latest post</h2>
+      <article class="card">
+        <h3>BG English Weekly Table Note 001</h3>
+        <p>A weekly table note for prediction, reaction, corporate discussion, Silver Circle participation, PDF downloads, and sponsor-supported local tables.</p>
+        <a class="cta" href="/blog/bg-english-weekly-table-note-001/">Read the Weekly Table Note</a>
+      </article>
+      <h2>Latest game briefing</h2>
       <article class="card">
         <h3>Blokus English Briefing Card</h3>
         <p>Beginner-friendly English practice for shape placement, corners, space, blocking, and simple reason-giving.</p>
@@ -247,6 +253,62 @@ const pages = [
       <h2>Live Table Question</h2>
       <article class="card"><p><strong>Ask:</strong> Are you opening space or blocking space?</p><p><strong>Choices:</strong> I am opening space. / I am blocking space. / I am saving space for later.</p></article>
       <footer><a href="/#briefings">Open all briefing cards</a></footer>
+    `,
+  },
+
+  {
+    path: '/blog/bg-english-weekly-table-note-001/',
+    lang: 'en',
+    title: 'BG English Weekly Table Note 001 | Predict, React, And Keep Talking',
+    description: 'BG English Weekly Table Note 001 gives one game-table English phrase, corporate use, Silver Circle use, Japanese context, PDF downloads, and a sponsor space for local Fukuoka tables.',
+    keywords: 'BG English Weekly Table Note, Board Game English weekly note, Fukuoka English conversation, Silver Circle English, corporate English Fukuoka, board game English PDF',
+    priority: '0.85',
+    changefreq: 'weekly',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: 'BG English Weekly Table Note 001: Predict, React, And Keep Talking',
+      about: ['English conversation', 'board games', 'Fukuoka', 'Silver Circle', 'corporate English'],
+      inLanguage: ['en', 'ja'],
+      publisher: {
+        '@type': 'Organization',
+        name: 'Board Game English Club',
+        email: 'ministarenglish@mail.com',
+      },
+    },
+    body: `
+      <section class="hero">
+        <span class="badge">BG English Weekly Table Note</span>
+        <h1>Predict, react, and keep talking.</h1>
+        <p class="soft">One game idea, one English skill, and one practical use for Board Game English tables in Fukuoka. This note supports corporate workshops, Silver Circle sessions, families, teachers, and anyone building real conversation through play.</p>
+        <a class="cta" href="/#weekly-note">Open the interactive Weekly Note</a>
+      </section>
+      <h2>This week's English</h2>
+      <article class="card">
+        <h3>“I changed my mind.”</h3>
+        <p>This phrase turns a small strategy change into natural English. The learner does not need a perfect explanation. Saying “I changed my mind” keeps the conversation moving and makes thinking visible.</p>
+        <p><strong>Step pattern:</strong> I think this will happen. / That surprised me. / I changed my mind.</p>
+      </article>
+      <h2>日本語メモ</h2>
+      <article class="card pink">
+        <h3>「考えが変わりました」</h3>
+        <p>ゲーム中の小さな作戦変更を、自然な英語に変える表現です。完璧な理由を言う必要はありません。「考えが変わりました」と言えるだけで、会話が続きます。</p>
+      </article>
+      <h2>Applications</h2>
+      <div class="grid">
+        <article class="card"><h3>Corporate</h3><p>Use before a planning meeting as a low-pressure warm-up. Ask each person for one prediction, then ask what changed after the move.</p></article>
+        <article class="card pink"><h3>Silver Circle</h3><p>Use one phrase only, repeated several times. The aim is friendly participation, memory, and social contact. This is not medical care.</p></article>
+      </div>
+      <h2>Japanese social context</h2>
+      <article class="card"><p>In many Japanese community and workplace settings, open conversation can feel too vague. A board game gives visible structure: turns, roles, choices, and a shared object of attention. That structure lowers the pressure to perform English.</p></article>
+      <h2>Downloads</h2>
+      <div class="grid">
+        <article class="card"><h3>English PDF</h3><a class="cta" href="/downloads/bg-english-weekly-note-001-en.pdf">Download English PDF</a></article>
+        <article class="card"><h3>日本語PDF</h3><a class="cta" href="/downloads/bg-english-weekly-note-001-ja.pdf">日本語PDFをダウンロード</a></article>
+      </div>
+      <h2>Sponsorship space</h2>
+      <article class="card"><p>Reserved for a cafe, company, education partner, or community sponsor aligned with language learning, local connection, and thoughtful participation.</p></article>
+      <footer><a href="mailto:ministarenglish@mail.com?subject=BG%20English%20Weekly%20Table%20Note">Request the Weekly Table Note by email</a></footer>
     `,
   },
   {

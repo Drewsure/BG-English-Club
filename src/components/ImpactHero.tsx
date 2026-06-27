@@ -13,8 +13,10 @@ import {
   Trophy,
   Zap,
 } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import type { Section } from '../App';
-import type { Language } from '../lib/i18n';
+import { getGames } from '../lib/games';
+import { ui, type Language } from '../lib/i18n';
 import { BrandLogo } from './BrandLogo';
 
 const beats = [
@@ -79,7 +81,7 @@ const tableCards = [
 ];
 
 const promiseTiles = [
-  ['Learn English', 'Useful phrases appear while you choose, explain, ask, and react.'],
+  ['Learn English', '{localizedPromiseTiles[0][1]}'],
   ['Keep Your Mind Active', 'Games give memory, planning, attention, and decision-making a friendly workout.'],
   ['Build Community', 'A shared table makes conversation easier, warmer, and more natural.'],
   ['Use Board Games', 'The game is not decoration. It is the engine that creates the English moment.'],
@@ -117,6 +119,87 @@ const sessionPath = [
 
 export function ImpactHero({ language, onNavigate }: { language: Language; onNavigate: (section: Section) => void }) {
   const isJa = language === 'ja';
+  const home = ui[language].home;
+  const common = ui[language].common;
+  const [gameCount, setGameCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    getGames().then((games) => setGameCount(games.length));
+  }, []);
+
+  const localizedBeats = isJa ? [
+    { icon: Gamepad2, label: '01', title: 'ゲームを選ぶ', copy: '見て、触って、話す理由が生まれる本物のボードゲームから始めます。' },
+    { icon: Target, label: '02', title: '英語の動きを一つ使う', copy: '予想する、反応する、説明する、質問する、相談する、ふり返る。一つで十分です。' },
+    { icon: MessageCircle, label: '03', title: '遊びながら話す', copy: '会話を無理に作りません。ゲームの場面が話す理由を作り、カードが言葉を支えます。' },
+    { icon: Trophy, label: '04', title: '進歩を持ち帰る', copy: '実際に使えた一文、テーブルで起きたこと、次回の一歩を持ち帰ります。' },
+  ] : beats;
+
+  const localizedEntryPaths = isJa ? [
+    { icon: Briefcase, title: '企業向け', audience: '企業ワークショップ', copy: '聞く、決める、説明する、調整する力を、遊べる課題に変えます。', action: '研修を見る', section: 'partnerships' as Section, tone: 'from-[#ffcf3f] to-[#ff8d3f]', mascot: '/images/impact/meeples/corporate-teams.png', tag: 'Strategy' },
+    { icon: Heart, title: 'Silver Circle', audience: 'シニア・退職後の方', copy: '外に出て、人と会い、表現を思い出し、笑えるやさしい地域テーブルです。', action: 'Silver Circleへ', section: 'silver-circle' as Section, tone: 'from-[#ff6fa1] to-[#ffd1df]', mascot: '/images/impact/meeples/silver-circle.png', tag: 'Community' },
+    { icon: Gamepad2, title: '親子・家族向け', audience: 'ファミリーゲーム', copy: '親子で順番、選択、ほめ言葉、短い英語を自然に共有します。', action: '参加方法を見る', section: 'offers' as Section, tone: 'from-[#ffcf3f] to-[#65f4e7]', mascot: '/images/impact/meeples/families.png', tag: 'Play Together' },
+    { icon: Printer, title: '先生・主催者向け', audience: 'ブリーフィングカード', copy: '一つのゲームを、ルール、表現、質問、ふり返りつきの教材にします。', action: '教材を見る', section: 'briefings' as Section, tone: 'from-[#65f4e7] to-[#8fb7ff]', mascot: '/images/impact/meeples/teachers.png', tag: 'Table Host' },
+  ] : entryPaths;
+
+  const localizedTableCards = isJa ? [
+    ['予想する', '何が起きると思いますか？'],
+    ['反応する', 'それは意外でした。'],
+    ['説明する', 'これを選んだ理由は...'],
+    ['記録する', '次回は...を試したいです。'],
+  ] : tableCards;
+
+  const localizedPromiseTiles = isJa ? [
+    ['英語を学ぶ', '選ぶ、説明する、質問する、反応する中で、使える表現が出てきます。'],
+    ['頭を使う', '記憶、計画、注意、判断を、楽しい形で使います。'],
+    ['地域とつながる', '同じテーブルを囲むと、会話がやさしく自然になります。'],
+    ['ボードゲームを使う', 'ゲームは飾りではありません。英語が生まれるエンジンです。'],
+  ] : promiseTiles;
+
+  const localizedMagneticMoments = isJa ? [
+    ['早く安心できる', '手と目を使う対象があるので、英語だけに注目されすぎません。'],
+    ['話す理由がある', '毎ターン、小さな判断、質問、驚き、説明が生まれます。'],
+    ['実際の表現を使う', '暗記した台本ではなく、今起きていることから英語が出ます。'],
+    ['進歩に気づける', 'プレイ後、一つの表現が「使えた英語」として残ります。'],
+    ['テーブルに居場所がある', 'Silver Circle、企業、親子、先生、初心者が、それぞれの入口から参加できます。'],
+    ['次に何をするか分かる', '体験、教材、研修、定期セッションへ自然につながります。'],
+  ] : magneticMoments;
+
+  const localizedWhyItWorks = isJa ? [
+    ['ゲームが流れを作る', '誰の番か、何を選ぶか、なぜ次の一言が必要かが見えます。'],
+    ['英語に目的がある', '置く、説明する、助けを求める、反応するために話します。'],
+    ['サポートがある', 'ブリーフィングカード、ライブ質問、日本語サポート、印刷ノートで安心できます。'],
+    ['進歩が人間らしい', '完璧な文法ではなく、役に立つ一言を言えたことに気づきます。'],
+  ] : whyItWorks;
+
+  const localizedBookableWays = isJa ? [
+    ['体験テーブル', 'まず一回、やさしいセッションを試せます。'],
+    ['Silver Circle', 'シニア向けのやさしい英語ゲームと地域交流。'],
+    ['企業ワークショップ', 'チーム、会議、ソフトスキルのための英語コミュニケーション。'],
+    ['ブリーフィングカード', '先生、保護者、ゲーム会向けの印刷できるガイド。'],
+  ] : bookableWays;
+
+  const localizedSessionPath = isJa ? [
+    ['到着', '合うゲームを選び、短い一文でウォームアップします。'],
+    ['プレイ', 'ゲームの場面に合わせて、質問やフレーズカードを使います。'],
+    ['気づく', '遊んだ後に、実際に出てきた英語を一つ集めます。'],
+    ['続ける', '印刷ノート、定期テーブル、次のグループセッションにつなげます。'],
+  ] : sessionPath;
+
+  const localizedFinalTiles = isJa ? [
+    [Briefcase, '企業', '硬すぎない形でソフトスキルを練習'],
+    [Heart, 'Silver Circle', 'やさしい参加と本当のつながり'],
+    [Languages, '英語', 'ゲームの状況から生まれる使える表現'],
+    [Printer, '印刷教材', 'テーブル後にも残るPDFと進捗ノート'],
+  ] : [
+    [Briefcase, 'Corporate', 'Soft skills without role-play stiffness'],
+    [Heart, 'Silver Circle', 'Gentle participation and real connection'],
+    [Languages, 'English', 'Useful phrases born from the game state'],
+    [Printer, 'Printable', 'PDFs and progress notes that leave the table'],
+  ];
+
+  const localizedChips = isJa
+    ? ['福岡市西区', '日本語サポート', 'テストなし', 'プレッシャーなし']
+    : ['Nishi-ku, Fukuoka', 'Japanese support available', 'No tests', 'No pressure'];
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#081f2f] text-white">
@@ -139,7 +222,18 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
           35% { opacity: .65; }
           100% { transform: translateX(140%); opacity: 0; }
         }
+        @keyframes softOrbit {
+          0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+          33% { transform: translate3d(18px, -12px, 0) rotate(8deg); }
+          66% { transform: translate3d(-12px, 10px, 0) rotate(-6deg); }
+        }
+        @keyframes cardBreathe {
+          0%, 100% { box-shadow: 0 18px 52px rgba(101,244,231,.16); }
+          50% { box-shadow: 0 24px 74px rgba(255,207,63,.24); }
+        }
         .impact-float { animation: impactFloat 5.5s ease-in-out infinite; }
+        .soft-orbit { animation: softOrbit 9s ease-in-out infinite; }
+        .card-breathe { animation: cardBreathe 4.6s ease-in-out infinite; }
         .route-pulse { animation: routePulse 2.4s ease-in-out infinite; transform-origin: left center; }
         .token-step { animation: tokenStep 3.4s ease-in-out infinite; }
         .glow-sweep::after {
@@ -150,7 +244,7 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
           animation: glowSweep 5.8s ease-in-out infinite;
         }
         @media (prefers-reduced-motion: reduce) {
-          .impact-float, .route-pulse, .token-step, .glow-sweep::after { animation: none; }
+          .impact-float, .route-pulse, .token-step, .glow-sweep::after, .soft-orbit, .card-breathe { animation: none; }
         }
       `}</style>
 
@@ -167,8 +261,8 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
             </div>
 
             <h1 className="mt-5 max-w-3xl font-display text-5xl leading-[0.92] tracking-wide md:text-6xl xl:text-8xl">
-              Learn English Through Board Games
-              <span className="mt-3 block text-[#65f4e7]">Think. Speak. Connect.</span>
+              {isJa ? 'ボードゲームで英語を使う' : 'Learn English Through Board Games'}
+              <span className="mt-3 block text-[#65f4e7]">{isJa ? '考える。話す。つながる。' : 'Think. Speak. Connect.'}</span>
             </h1>
 
             <p className="mt-5 max-w-xl text-base leading-7 text-white/82 md:text-lg md:leading-8">
@@ -186,17 +280,29 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
               </button>
             </div>
 
-            <div className="mt-4 grid max-w-xl gap-2 pb-6 sm:grid-cols-4 md:pb-0">
-              {['Learn English', 'Stay Sharp', 'Meet People', 'Play Games'].map((word) => (
+            <div className="mt-4 grid max-w-xl gap-2 sm:grid-cols-4">
+              {localizedChips.map((word) => (
                 <span key={word} className="rounded-full border border-white/18 bg-white/10 px-3 py-2 text-center text-[10px] font-black uppercase tracking-[0.12em] text-white/82 backdrop-blur-md">
                   {word}
                 </span>
               ))}
             </div>
+
+            <div className="mt-5 max-w-2xl space-y-3 rounded-[1.4rem] border border-white/14 bg-white/10 p-4 text-sm leading-7 text-white/74 backdrop-blur-md card-breathe">
+              <p className="font-bold text-[#ffcf3f]">{home.promise}</p>
+              <p>{home.body1}</p>
+              <p>{home.body2}</p>
+              <p>{home.body3}</p>
+            </div>
+
+            <div className="mt-4 inline-flex items-center gap-3 rounded-full border border-white/18 bg-white/10 px-4 py-2 text-sm font-black text-white/86">
+              <Gamepad2 size={18} className="text-[#ffcf3f]" />
+              <span className="font-display text-2xl text-[#65f4e7]">{gameCount ?? '...'}</span> {common.games}
+            </div>
           </div>
 
           <div className="relative hidden min-h-[520px] md:block xl:min-h-[560px]">
-            <div className="impact-float absolute right-[8%] top-[6%] w-72 rounded-[1.8rem] border border-white/20 bg-white/14 p-5 shadow-2xl shadow-cyan-500/20 backdrop-blur-xl [--tilt:4deg]">
+            <div className="impact-float soft-orbit absolute right-[8%] top-[6%] w-72 rounded-[1.8rem] border border-white/20 bg-white/14 p-5 shadow-2xl shadow-cyan-500/20 backdrop-blur-xl [--tilt:4deg]">
               <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#65f4e7]">Board Game English</p>
               <p className="mt-3 font-display text-3xl leading-none">Learn English through real games.</p>
               <div className="route-pulse mt-5 h-1 rounded-full bg-[#65f4e7]" />
@@ -230,7 +336,7 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
                 <span className="h-5 w-5 rounded-full bg-[#65f4e7] shadow-lg shadow-[#65f4e7]/40 transition group-hover:translate-x-5" />
               </div>
               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#7d4418]">First promise</p>
-              <h2 className="mt-4 max-w-sm font-display text-5xl leading-none tracking-wide">Learn English</h2>
+              <h2 className="mt-4 max-w-sm font-display text-5xl leading-none tracking-wide">{localizedPromiseTiles[0][0]}</h2>
               <p className="mt-4 max-w-md text-sm font-bold leading-7 text-[#3c2b1e]/78">
                 Useful phrases appear while you choose, explain, ask, and react.
               </p>
@@ -244,7 +350,7 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
             </article>
 
             <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-              {promiseTiles.slice(1).map(([title, copy], index) => {
+              {localizedPromiseTiles.slice(1).map(([title, copy], index) => {
                 const tones = [
                   'from-[#65f4e7]/18 to-[#8fb7ff]/12 border-[#65f4e7]/22 text-[#65f4e7]',
                   'from-[#ff6fa1]/18 to-[#ffd1df]/12 border-[#ff6fa1]/22 text-[#ff9bbc]',
@@ -269,15 +375,15 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
           <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(255,207,63,.10),transparent_36%,rgba(101,244,231,.10)_76%,transparent)]" />
           <div className="relative mb-5 flex flex-col justify-between gap-3 md:flex-row md:items-end">
             <div>
-              <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#65f4e7]">How You Start</p>
-              <h2 className="mt-2 font-display text-4xl leading-none md:text-5xl">A simple route into English.</h2>
+              <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#65f4e7]">{isJa ? '始め方' : 'How You Start'}</p>
+              <h2 className="mt-2 font-display text-4xl leading-none md:text-5xl">{isJa ? '英語へのシンプルな入口。' : 'A simple route into English.'}</h2>
             </div>
-            <p className="max-w-md text-sm leading-6 text-white/64">The game carries the session, so visitors always know what to do next.</p>
+            <p className="max-w-md text-sm leading-6 text-white/64">{isJa ? 'ゲームが流れを作るので、次に何をするかが自然に分かります。' : 'The game carries the session, so visitors always know what to do next.'}</p>
           </div>
 
           <div className="relative grid gap-3 md:grid-cols-4">
             <span className="absolute left-8 right-8 top-9 hidden h-1 rounded-full bg-white/10 md:block" />
-          {beats.map(({ icon: Icon, label, title, copy }) => (
+          {localizedBeats.map(({ icon: Icon, label, title, copy }) => (
             <article key={title} className="group relative overflow-hidden rounded-[1.4rem] border border-white/12 bg-[#081f2f]/64 p-4 shadow-xl shadow-black/10 transition hover:-translate-y-1 hover:bg-white/[0.1]">
               <span className="absolute right-[-20px] top-[-20px] h-20 w-20 rounded-full border border-white/10" />
               <div className="flex items-center justify-between">
@@ -295,14 +401,14 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
       <section className="container-shell py-8">
         <div className="mb-7 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
-            <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#ffcf3f]">Choose Your Door</p>
-            <h2 className="mt-3 font-display text-5xl leading-[0.95] md:text-7xl">Every visitor needs a way in.</h2>
+            <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#ffcf3f]">{isJa ? '入口を選ぶ' : 'Choose Your Door'}</p>
+            <h2 className="mt-3 font-display text-5xl leading-[0.95] md:text-7xl">{isJa ? '誰にでも入りやすい道があります。' : 'Every visitor needs a way in.'}</h2>
           </div>
-          <p className="max-w-xl text-sm leading-7 text-white/68">Choose the doorway that fits you today. Each path leads to the same promise: useful English, real play, and a table that helps you speak.</p>
+          <p className="max-w-xl text-sm leading-7 text-white/68">{isJa ? '今日の自分に合う入口を選べます。どの道も、使える英語、本物の遊び、話しやすいテーブルにつながります。' : 'Choose the doorway that fits you today. Each path leads to the same promise: useful English, real play, and a table that helps you speak.'}</p>
         </div>
 
         <div className="grid gap-4 lg:grid-cols-4">
-          {entryPaths.map(({ icon: Icon, title, audience, copy, action, section, tone, mascot, tag }) => (
+          {localizedEntryPaths.map(({ icon: Icon, title, audience, copy, action, section, tone, mascot, tag }) => (
             <button
               key={title}
               onClick={() => onNavigate(section)}
@@ -335,17 +441,17 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
 
       <section className="container-shell grid gap-8 py-10 lg:grid-cols-[0.95fr_1.05fr]">
         <div>
-          <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#ffcf3f]">Why It Feels Different</p>
+          <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#ffcf3f]">{isJa ? '違って感じる理由' : 'Why It Feels Different'}</p>
           <h2 className="mt-4 font-display text-5xl leading-[0.95] md:text-7xl">
-            You are not practising English in the air. You are using it at the table.
+            {isJa ? '空中で英語を練習するのではなく、テーブルで実際に使います。' : 'You are not practising English in the air. You are using it at the table.'}
           </h2>
           <p className="mt-6 max-w-2xl text-base leading-8 text-white/70">
-            A board game gives the room a shared focus. You can point, choose, laugh, think, and try again. The English grows from what is happening in front of you.
+            {isJa ? 'ボードゲームは、全員が見られる共通の対象を作ります。指さし、選び、笑い、考え、もう一度試す。その場で起きることから英語が育ちます。' : 'A board game gives the room a shared focus. You can point, choose, laugh, think, and try again. The English grows from what is happening in front of you.'}
           </p>
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2">
-          {tableCards.map(([label, phrase], index) => (
+          {localizedTableCards.map(([label, phrase], index) => (
             <div key={label} className="rounded-[1.4rem] border border-white/12 bg-white/[0.07] p-5 shadow-xl shadow-black/10" style={{ transform: `rotate(${[-2, 1.5, -1, 2][index]}deg)` }}>
               <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#65f4e7]">{label}</p>
               <p className="mt-4 font-display text-3xl leading-none">{phrase}</p>
@@ -358,16 +464,16 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
         <div className="rounded-[2rem] border border-white/12 bg-white/[0.07] p-6 shadow-2xl shadow-black/15">
           <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div>
-              <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#65f4e7]">What You Will Notice</p>
-              <h2 className="mt-3 font-display text-5xl leading-none">The room changes when English has a job.</h2>
+              <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#65f4e7]">{isJa ? '気づくこと' : 'What You Will Notice'}</p>
+              <h2 className="mt-3 font-display text-5xl leading-none">{isJa ? '英語に役割があると、場の空気が変わります。' : 'The room changes when English has a job.'}</h2>
             </div>
             <div className="rounded-full border border-[#ffcf3f]/35 bg-[#ffcf3f]/12 px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-[#ffcf3f]">
-              Calm + Choice + Progress
+              {isJa ? '安心 + 選択 + 進歩' : 'Calm + Choice + Progress'}
             </div>
           </div>
 
           <div className="mt-7 grid gap-3 md:grid-cols-3">
-            {magneticMoments.map(([title, copy], index) => (
+            {localizedMagneticMoments.map(([title, copy], index) => (
               <article key={title} className="rounded-2xl border border-white/12 bg-[#081f2f]/60 p-5">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-black uppercase tracking-[0.18em] text-white/38">Table moment {index + 1}</span>
@@ -383,9 +489,9 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
 
       <section className="container-shell grid gap-5 py-7 lg:grid-cols-2">
         <div className="rounded-[2rem] border border-white/12 bg-[#fffaf0] p-7 text-[#17212b]">
-          <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#d87522]">Why It Works</p>
+          <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#d87522]">{isJa ? 'なぜ機能するのか' : 'Why It Works'}</p>
           <div className="mt-6 grid gap-4">
-            {whyItWorks.map(([title, copy]) => (
+            {localizedWhyItWorks.map(([title, copy]) => (
               <div key={title} className="rounded-2xl border border-[#efd39d] bg-white p-5">
                 <h3 className="font-display text-2xl tracking-wide">{title}</h3>
                 <p className="mt-2 text-sm leading-6 text-[#62584f]">{copy}</p>
@@ -395,9 +501,9 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
         </div>
 
         <div className="rounded-[2rem] border border-white/12 bg-white/[0.07] p-7">
-          <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#65f4e7]">Ways To Join</p>
+          <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#65f4e7]">{isJa ? '参加方法' : 'Ways To Join'}</p>
           <div className="mt-6 grid gap-4">
-            {bookableWays.map(([title, copy], index) => (
+            {localizedBookableWays.map(([title, copy], index) => (
               <div key={title} className="flex gap-4 rounded-2xl border border-white/12 bg-black/16 p-5">
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#ffcf3f] text-sm font-black text-[#17212b]">{index + 1}</span>
                 <span>
@@ -414,14 +520,14 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
         <div className="rounded-[2rem] border border-[#ffcf3f]/25 bg-[#fffaf0] p-7 text-[#17212b] shadow-2xl shadow-[#ffcf3f]/10">
           <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr]">
             <div>
-              <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#d87522]">Your Session Path</p>
-              <h2 className="mt-3 font-display text-5xl leading-none">From first hello to useful English you remember.</h2>
+              <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#d87522]">{isJa ? 'セッションの流れ' : 'Your Session Path'}</p>
+              <h2 className="mt-3 font-display text-5xl leading-none">{isJa ? '最初のあいさつから、覚えて帰れる英語まで。' : 'From first hello to useful English you remember.'}</h2>
               <p className="mt-5 text-sm leading-7 text-[#62584f]">
-                A session is designed to feel friendly, clear, and active. You do not need to be good at games or confident in English before you begin.
+                {isJa ? 'セッションは、やさしく、分かりやすく、動きのある時間として設計しています。ゲームが得意でなくても、英語に自信がなくても始められます。' : 'A session is designed to feel friendly, clear, and active. You do not need to be good at games or confident in English before you begin.'}
               </p>
             </div>
             <div className="grid gap-3 md:grid-cols-2">
-              {sessionPath.map(([step, title, copy]) => (
+              {localizedSessionPath.map(([step, title, copy]) => (
                 <article key={step} className="rounded-2xl border border-[#efd39d] bg-white p-5">
                   <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#d87522]">{step}</p>
                   <h3 className="mt-2 font-display text-3xl leading-none">{title}</h3>
@@ -435,12 +541,7 @@ export function ImpactHero({ language, onNavigate }: { language: Language; onNav
 
       <section className="container-shell pb-16">
         <div className="grid gap-4 rounded-[2rem] border border-white/12 bg-white/[0.08] p-6 backdrop-blur-md md:grid-cols-4">
-          {[
-            [Briefcase, 'Corporate', 'Soft skills without role-play stiffness'],
-            [Heart, 'Silver Circle', 'Gentle participation and real connection'],
-            [Languages, 'English', 'Useful phrases born from the game state'],
-            [Printer, 'Printable', 'PDFs and progress notes that leave the table'],
-          ].map(([Icon, title, copy]) => {
+          {localizedFinalTiles.map(([Icon, title, copy]) => {
             const RealIcon = Icon as typeof Briefcase;
             return (
               <div key={title as string} className="rounded-2xl bg-[#081f2f]/50 p-5">

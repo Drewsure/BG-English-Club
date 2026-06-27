@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AuthProvider } from './contexts/AuthContext';
 import { Header } from './components/Header';
-import { Hero } from './components/Hero';
 import { SituationRoom } from './components/SituationRoom';
 import { Reserves } from './components/Reserves';
 import { Dossier } from './components/Dossier';
@@ -85,7 +84,7 @@ function AppContent() {
       <Seo section={section} language={language} />
       <Header onNavigate={navigate} currentSection={section} language={language} onToggleLanguage={toggleLanguage} />
       {showPlainAnswer && <PlainAnswer section={section} language={language} />}
-      {section === 'home' && <Hero onNavigate={navigate} language={language} />}
+      {section === 'home' && <ImpactHero onNavigate={navigate} language={language} />}
       {section === 'situation' && <SituationRoom onNavigate={navigate} language={language} />}
       {(section === 'armory' || section === 'board' || section === 'challenges') && <Board onNavigate={navigate} language={language} />}
       {section === 'games' && <Reserves language={language} />}

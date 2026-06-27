@@ -9,8 +9,8 @@ const imageUrl = `${siteUrl}/images/board-english-logo.jpeg`;
 const pageMeta: Record<Section, { title: string; description: string; keywords: string }> = {
   home: {
     title: '福岡市西区 英語ボードゲームサークル | Board Game English Club',
-    description: 'Board Game English Club 福岡チャプターは、福岡市西区で英語をボードゲームで楽しく使う少人数サークルです。初心者、親子、シニア、大人、企業・団体向けに日本語サポートつきで参加できます。',
-    keywords: '福岡市西区 英語 サークル, 福岡 英会話 初心者, 福岡 ボードゲーム 英語, 西区 親子 英語, 福岡 シニア 英語, 福岡 企業研修 英語',
+    description: 'Board Game English Club 福岡チャプターは、福岡市西区で英語をボードゲームで使う少人数サークルです。初心者、親子、Silver Circle、企業研修、先生向け教材まで日本語サポートつきで参加できます。',
+    keywords: '福岡市西区 英語 サークル, 福岡 英会話 初心者, 福岡 ボードゲーム 英語, 西区 親子 英語, Silver Circle 福岡, 福岡 企業研修 英語, board game English Fukuoka',
   },
   situation: {
     title: 'Why Board Games Help English Conversation | Board Game English Club',
@@ -63,8 +63,8 @@ const pageMeta: Record<Section, { title: string; description: string; keywords: 
     keywords: 'Board Game English weekly note, Fukuoka corporate English, Silver Circle English, board game newsletter Japan, English conversation activity',
   },
   impact: {
-    title: 'Creative Impact Demo | Board Game English Club',
-    description: 'A creative prototype showing how Board Game English Club can combine gaming energy, education clarity, Silver Circle warmth, and corporate communication outcomes.',
+    title: 'Learn English Through Board Games | Board Game English Club',
+    description: 'Board Game English Club combines gaming energy, education clarity, Silver Circle warmth, and corporate communication outcomes for English learners in Fukuoka.',
     keywords: 'Board Game English design, gaming education website, Fukuoka English learning, interactive English hero, creative education landing page',
   },
   'briefing-detail': {
